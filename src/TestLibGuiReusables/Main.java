@@ -13,6 +13,8 @@ import LibGuiReusables.*;
  */
 public class Main {
 
+    
+    
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
 
