@@ -32,7 +32,6 @@ public class Main {
         formularioExtensible.addHijoExtensible(formularioSimpleD1, "");
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
-
     }
 
 }
