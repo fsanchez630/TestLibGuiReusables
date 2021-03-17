@@ -6,12 +6,14 @@
 package TestLibGuiReusables;
 
 import LibGuiReusables.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author Javi
  */
-public class Main {
+public class Main  {
 
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
@@ -58,4 +60,7 @@ public class Main {
         });
     }
 
+    
+   
+    
 }
