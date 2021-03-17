@@ -2,7 +2,10 @@
 
 package TestLibGuiReusables;
 
-public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple {
+import LibGuiReusables.IComunicable;
+import LibGuiReusables.IValidable;
+
+public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implements IComunicable,IValidable{
     
     /** Creates new form Find */
     public FormSimpleDis1() {
@@ -71,5 +74,18 @@ public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple {
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSpinner jSpinner1;
     // End of variables declaration//GEN-END:variables
-    
+
+
+
+ @Override
+    public void cambiarValor(String nombreComponente, Object valor) {
+        System.out.println("cambiar valor");
+    }
+
+    @Override
+    public void recuperarValorExterno(String nombreComponente, Object valor) {
+        
+        
+        System.out.println("recuperar valor");
+    }    
 }

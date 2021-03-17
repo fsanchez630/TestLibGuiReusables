@@ -1,8 +1,10 @@
 
 
 package TestLibGuiReusables;
+import LibGuiReusables.IComunicable;
+import LibGuiReusables.IValidable;
 
-public class FormSimpleDis0 extends LibGuiReusables.LibFormularioSimple {
+public class FormSimpleDis0 extends LibGuiReusables.LibFormularioSimple implements IValidable,IComunicable {
     
     /** Creates new form Find */
     public FormSimpleDis0() {
@@ -113,4 +115,25 @@ public class FormSimpleDis0 extends LibGuiReusables.LibFormularioSimple {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
     
+    
+    @Override
+    public  void cambiarValor(String nombreComponente, Object valor) {
+        System.out.println("cambiar valor");
+        
+        if (nombreComponente == "jCheckBox4"){
+           
+            jCheckBox4.setSelected((Boolean) valor);
+            
+        }
+    }
+
+    @Override
+    public void recuperarValorExterno(String nombreComponente, Object valor) {
+        
+        if (nombreComponente == "jSpinner1"){
+            jTextField1.setText((String) valor);
+            
+        }
+        System.out.println("recuperar valor");
+    }    
 }
