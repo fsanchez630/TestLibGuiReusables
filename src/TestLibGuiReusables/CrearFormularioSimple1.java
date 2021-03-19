@@ -8,7 +8,7 @@ package TestLibGuiReusables;
 import LibGuiReusables.LibFactoriaFormularios;
 import LibGuiReusables.LibFormularioExtensible;
 import LibGuiReusables.LibFormularioSimple;
-import LibGuiReusables.LibObservador;
+import LibGuiReusables.LibListaObservadoresEventos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JSpinner;
@@ -24,8 +24,8 @@ public class CrearFormularioSimple1 extends LibFormularioSimple implements Actio
     private static LibFormularioExtensible formularioExtensible;
     private static LibFactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
-    private static FormSimpleDis1 formularioSimpleD1;
-    private static LibObservador observadorEventos;
+    private static FormSimpleDis11 formularioSimpleD1;
+    private static LibListaObservadoresEventos observadorEventos;
 
     /**
      * Creates new form CrearFormularioSimple
@@ -105,16 +105,16 @@ public class CrearFormularioSimple1 extends LibFormularioSimple implements Actio
 
     private static void crearGUI() {
         formularioExtensible = new CrearFormularioSimple1();
-
-        formularioSimpleD0 = new FormSimpleDis0();
-        formularioSimpleD1 = new FormSimpleDis1();
-        observadorEventos = new LibObservador();
+        observadorEventos = new LibListaObservadoresEventos();
+        observadorEventos.nuevoActionListener(formularioExtensible);
+        observadorEventos.nuevoChangeListener(formularioExtensible);
         
+        formularioSimpleD0 = new FormSimpleDis0();
+        formularioSimpleD1 = new FormSimpleDis11(observadorEventos);
 
         formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
         formularioExtensible.addHijoExtensible(formularioSimpleD1, "");
-        observadorEventos.nuevoActionListener(formularioExtensible);
-        observadorEventos.nuevoChangeListener(formularioExtensible);
+      
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
 
