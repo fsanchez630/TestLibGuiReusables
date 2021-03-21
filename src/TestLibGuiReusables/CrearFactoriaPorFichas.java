@@ -8,6 +8,7 @@ package TestLibGuiReusables;
 import LibGuiReusables.LibFactoriaFormularios;
 import LibGuiReusables.LibFormularioExtensible;
 import LibGuiReusables.LibFormularioSimple;
+import LibGuiReusables.LibListaObservadoresEventos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JSpinner;
@@ -18,15 +19,16 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class CrearFormularioSimple extends LibFormularioSimple implements ActionListener, ChangeListener {
+public class CrearFactoriaPorFichas extends LibFormularioSimple implements ActionListener, ChangeListener {
 
     private static LibFormularioExtensible formularioExtensible;
     private static LibFactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
+    private static LibListaObservadoresEventos observadorEventos;
 
     /**
-     * Creates new form CrearFormularioSimple
+     * Creates new form CrearFactoriaSimple
      *
      * @return
      */
@@ -35,7 +37,7 @@ public class CrearFormularioSimple extends LibFormularioSimple implements Action
 
         factoriaFormularios = new LibFactoriaFormularios();
 
-        return (factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE));
+        return (factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS));
 
     }
 
@@ -64,52 +66,18 @@ public class CrearFormularioSimple extends LibFormularioSimple implements Action
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrearFormularioSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrearFormularioSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrearFormularioSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrearFormularioSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    public void crearGUI() {
+        formularioExtensible = new CrearFactoriaPorFichas();
+        observadorEventos = new LibListaObservadoresEventos();
+        observadorEventos.nuevoActionListener(formularioExtensible);
+        observadorEventos.nuevoChangeListener(formularioExtensible);
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                crearGUI();
-            }
-        });
-    }
-
-    private static void crearGUI() {
-        formularioExtensible = new CrearFormularioSimple();
-
-        formularioSimpleD0 = new FormSimpleDis0();
-        formularioSimpleD1 = new FormSimpleDis1();
+        formularioSimpleD0 = new FormSimpleDis0(observadorEventos);
+        formularioSimpleD1 = new FormSimpleDis1(observadorEventos);
 
         formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
         formularioExtensible.addHijoExtensible(formularioSimpleD1, "");
-        formularioSimpleD1.nuevoActionListener(formularioExtensible);
-        formularioSimpleD1.nuevoChangeListener(formularioExtensible);
+        
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
 
@@ -155,4 +123,6 @@ public class CrearFormularioSimple extends LibFormularioSimple implements Action
         formularioSimpleD0.recuperarValorExterno("jSpinner1", s.getValue().toString());
 
     }
+    
+   
 }

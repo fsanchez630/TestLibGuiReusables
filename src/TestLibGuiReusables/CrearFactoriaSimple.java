@@ -19,16 +19,16 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class CrearFormularioSimple1 extends LibFormularioSimple implements ActionListener, ChangeListener {
+public class CrearFactoriaSimple extends LibFormularioSimple implements ActionListener, ChangeListener {
 
     private static LibFormularioExtensible formularioExtensible;
     private static LibFactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
-    private static FormSimpleDis11 formularioSimpleD1;
+    private static FormSimpleDis1 formularioSimpleD1;
     private static LibListaObservadoresEventos observadorEventos;
 
     /**
-     * Creates new form CrearFormularioSimple
+     * Creates new form CrearFactoriaSimple
      *
      * @return
      */
@@ -66,55 +66,18 @@ public class CrearFormularioSimple1 extends LibFormularioSimple implements Actio
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrearFormularioSimple1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrearFormularioSimple1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrearFormularioSimple1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrearFormularioSimple1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                crearGUI();
-            }
-        });
-    }
-
-    private static void crearGUI() {
-        formularioExtensible = new CrearFormularioSimple1();
+    public void crearGUI() {
+        formularioExtensible = new CrearFactoriaSimple();
         observadorEventos = new LibListaObservadoresEventos();
         observadorEventos.nuevoActionListener(formularioExtensible);
         observadorEventos.nuevoChangeListener(formularioExtensible);
-        
-        formularioSimpleD0 = new FormSimpleDis0();
-        formularioSimpleD1 = new FormSimpleDis11(observadorEventos);
+
+        formularioSimpleD0 = new FormSimpleDis0(observadorEventos);
+        formularioSimpleD1 = new FormSimpleDis1(observadorEventos);
 
         formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
         formularioExtensible.addHijoExtensible(formularioSimpleD1, "");
-      
+        
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
 
@@ -160,4 +123,6 @@ public class CrearFormularioSimple1 extends LibFormularioSimple implements Actio
         formularioSimpleD0.recuperarValorExterno("jSpinner1", s.getValue().toString());
 
     }
+    
+   
 }

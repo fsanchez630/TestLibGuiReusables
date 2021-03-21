@@ -2,22 +2,21 @@ package TestLibGuiReusables;
 
 import LibGuiReusables.IComunicable;
 import LibGuiReusables.IValidable;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.EventListenerList;
+import LibGuiReusables.LibListaObservadoresEventos;
 
 public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implements IComunicable, IValidable {
 
-    private EventListenerList listeners;
+    private LibListaObservadoresEventos observadores;
 
     /**
      * Creates new form Find
+     * @param obs
      */
-    public FormSimpleDis1() {
+    
+
+    public FormSimpleDis1(LibListaObservadoresEventos obs) {
         initComponents();
-        listeners = new EventListenerList();
+        this.observadores = obs;
     }
 
     /**
@@ -96,11 +95,11 @@ public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implemen
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
-        disparaStateChanged(evt);
+        observadores.disparaStateChanged(evt);
     }//GEN-LAST:event_jSpinner1StateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         disparaActionEvent(evt);
+        observadores.disparaActionEvent(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -123,27 +122,6 @@ public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implemen
         System.out.println("recuperar valor");
     }
 
-    private void disparaStateChanged(ChangeEvent evt) {
-        ChangeListener[] listenerLista = listeners.getListeners(ChangeListener.class);
-        for (int i = listenerLista.length - 1; i >= 0; --i) {
-            listenerLista[i].stateChanged(evt);
-        }
+   
 
-    }
-
-    public void nuevoChangeListener(ChangeListener listener) {
-        listeners.add(ChangeListener.class, listener);
-    }
-
-    private void disparaActionEvent(ActionEvent evt) {
-        ActionListener[] listenerLista = listeners.getListeners(ActionListener.class);
-        for (int i = listenerLista.length - 1; i >= 0; --i) {
-            listenerLista[i].actionPerformed(evt);
-        }
-
-    }
-
-    public void nuevoActionListener(ActionListener listener) {
-        listeners.add(ActionListener.class, listener);
-    }
 }
