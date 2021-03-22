@@ -13,7 +13,7 @@ import LibGuiReusables.LibListaObservadoresEventos;
  *
  * @author Javi
  */
-public class Main {
+public class Prueba {
 
     private static LibFormularioExtensible formularioExtensible;
     private static LibFactoriaFormularios factoriaFormularios;
@@ -47,7 +47,7 @@ public class Main {
 
         factoriaFormularios = new LibFactoriaFormularios();
 
-        formularioExtensible = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE);
+        formularioExtensible = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS,"Factoria por Fichas");
 
         observadorEventos = new LibListaObservadoresEventos();
         observadorEventos.nuevoActionListener(formularioExtensible);
@@ -56,8 +56,8 @@ public class Main {
         formularioSimpleD0 = new FormSimpleDis0(observadorEventos);
         formularioSimpleD1 = new FormSimpleDis1(observadorEventos);
 
-        formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
-        formularioExtensible.addHijoExtensible(formularioSimpleD1, "");
+        formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario0");
+        formularioExtensible.addHijoExtensible(formularioSimpleD1, "Formulario1");
 
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);

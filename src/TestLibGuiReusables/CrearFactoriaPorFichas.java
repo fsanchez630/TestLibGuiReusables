@@ -5,10 +5,8 @@
  */
 package TestLibGuiReusables;
 
-import LibGuiReusables.LibFactoriaFormularios;
-import LibGuiReusables.LibFormularioExtensible;
-import LibGuiReusables.LibFormularioSimple;
-import LibGuiReusables.LibListaObservadoresEventos;
+import LibGuiReusables.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JSpinner;
@@ -19,7 +17,7 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class CrearFactoriaPorFichas extends LibFormularioSimple implements ActionListener, ChangeListener {
+public class CrearFactoriaPorFichas extends LibFormularioPorFichas implements ActionListener, ChangeListener {
 
     private static LibFormularioExtensible formularioExtensible;
     private static LibFactoriaFormularios factoriaFormularios;
@@ -37,8 +35,8 @@ public class CrearFactoriaPorFichas extends LibFormularioSimple implements Actio
 
         factoriaFormularios = new LibFactoriaFormularios();
 
-        return (factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS));
-
+        LibFormularioExtensible retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS, "Factoria Por Fichas");
+        return retorno;
     }
 
     /**
@@ -67,7 +65,10 @@ public class CrearFactoriaPorFichas extends LibFormularioSimple implements Actio
     }// </editor-fold>//GEN-END:initComponents
 
     public void crearGUI() {
-        formularioExtensible = new CrearFactoriaPorFichas();
+
+        factoriaFormularios = new LibFactoriaFormularios();
+        formularioExtensible = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS, "Factoria Por Fichas");
+
         observadorEventos = new LibListaObservadoresEventos();
         observadorEventos.nuevoActionListener(formularioExtensible);
         observadorEventos.nuevoChangeListener(formularioExtensible);
@@ -76,8 +77,8 @@ public class CrearFactoriaPorFichas extends LibFormularioSimple implements Actio
         formularioSimpleD1 = new FormSimpleDis1(observadorEventos);
 
         formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
-        formularioExtensible.addHijoExtensible(formularioSimpleD1, "");
-        
+        formularioExtensible.addHijoExtensible(formularioSimpleD1, "Formulario2");
+
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
 
@@ -123,6 +124,5 @@ public class CrearFactoriaPorFichas extends LibFormularioSimple implements Actio
         formularioSimpleD0.recuperarValorExterno("jSpinner1", s.getValue().toString());
 
     }
-    
-   
+
 }

@@ -5,10 +5,8 @@
  */
 package TestLibGuiReusables;
 
-import LibGuiReusables.LibFactoriaFormularios;
-import LibGuiReusables.LibFormularioExtensible;
-import LibGuiReusables.LibFormularioSimple;
-import LibGuiReusables.LibListaObservadoresEventos;
+import LibGuiReusables.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JSpinner;
@@ -27,19 +25,7 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
     private static FormSimpleDis1 formularioSimpleD1;
     private static LibListaObservadoresEventos observadorEventos;
 
-    /**
-     * Creates new form CrearFactoriaSimple
-     *
-     * @return
-     */
-    public LibFormularioExtensible CrearFormularioSimple() {
-        initComponents();
-
-        factoriaFormularios = new LibFactoriaFormularios();
-
-        return (factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE));
-
-    }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,7 +53,9 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
     }// </editor-fold>//GEN-END:initComponents
 
     public void crearGUI() {
-        formularioExtensible = new CrearFactoriaSimple();
+
+        factoriaFormularios = new LibFactoriaFormularios();
+        formularioExtensible = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE, "Factoria Simple");
         observadorEventos = new LibListaObservadoresEventos();
         observadorEventos.nuevoActionListener(formularioExtensible);
         observadorEventos.nuevoChangeListener(formularioExtensible);
@@ -76,8 +64,8 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
         formularioSimpleD1 = new FormSimpleDis1(observadorEventos);
 
         formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
-        formularioExtensible.addHijoExtensible(formularioSimpleD1, "");
-        
+        formularioExtensible.addHijoExtensible(formularioSimpleD1, "Formulario2");
+
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
 
@@ -123,6 +111,5 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
         formularioSimpleD0.recuperarValorExterno("jSpinner1", s.getValue().toString());
 
     }
-    
-   
+
 }
