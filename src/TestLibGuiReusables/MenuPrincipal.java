@@ -34,6 +34,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonSalir = new javax.swing.JButton();
         botonCrearFactoriaSimple = new javax.swing.JButton();
         botonCrearFactoriaPorFichas = new javax.swing.JButton();
+        botonCrearFactoriaSimpleLista = new javax.swing.JButton();
+        botonCrearFactoriaPorFichasLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,37 +62,50 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonCrearFactoriaSimpleLista.setText("Crear Factoria Simple con Lista");
+        botonCrearFactoriaSimpleLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearFactoriaSimpleListaActionPerformed(evt);
+            }
+        });
+
+        botonCrearFactoriaPorFichasLista.setText("Crear Factoria por Fichas con Lista");
+        botonCrearFactoriaPorFichasLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearFactoriaPorFichasListaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonCrearFactoriaPorFichas, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(botonCrearFactoriaSimpleLista, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(botonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCrearFactoriaSimple, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(botonCrearFactoriaPorFichas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonCrearFactoriaPorFichasLista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 68, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(61, Short.MAX_VALUE)
-                    .addComponent(botonCrearFactoriaSimple, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(58, 58, 58)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
+                .addGap(46, 46, 46)
+                .addComponent(botonCrearFactoriaSimple)
+                .addGap(18, 18, 18)
                 .addComponent(botonCrearFactoriaPorFichas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(botonCrearFactoriaSimpleLista)
+                .addGap(18, 18, 18)
+                .addComponent(botonCrearFactoriaPorFichasLista)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(35, 35, 35))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(49, 49, 49)
-                    .addComponent(botonCrearFactoriaSimple)
-                    .addContainerGap(226, Short.MAX_VALUE)))
         );
 
         pack();
@@ -102,28 +117,44 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonCrearFactoriaSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaSimpleActionPerformed
-       
+
         CrearFactoriaSimple formularioFactoriaSimple;
         desactivarBotones();
-         formularioFactoriaSimple = new CrearFactoriaSimple();       
+        formularioFactoriaSimple = new CrearFactoriaSimple();
         formularioFactoriaSimple.crearGUI();
 
 
     }//GEN-LAST:event_botonCrearFactoriaSimpleActionPerformed
 
     private void botonCrearFactoriaPorFichasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaPorFichasActionPerformed
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         CrearFactoriaPorFichas formularioFactoriaPorfichas;
         desactivarBotones();
-        formularioFactoriaPorfichas = new CrearFactoriaPorFichas();       
+        formularioFactoriaPorfichas = new CrearFactoriaPorFichas();
         formularioFactoriaPorfichas.crearGUI();
     }//GEN-LAST:event_botonCrearFactoriaPorFichasActionPerformed
 
-    private void desactivarBotones(){
+    private void botonCrearFactoriaSimpleListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaSimpleListaActionPerformed
+        CrearFactoriaSimpleLista formularioFactoriaSimpleLista;
+        desactivarBotones();
+        formularioFactoriaSimpleLista = new CrearFactoriaSimpleLista();
+        formularioFactoriaSimpleLista.crearGUI();
+    }//GEN-LAST:event_botonCrearFactoriaSimpleListaActionPerformed
+
+    private void botonCrearFactoriaPorFichasListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaPorFichasListaActionPerformed
+        CrearFactoriaPorFichasLista formularioFactoriaPorFichasLista;
+        desactivarBotones();
+        formularioFactoriaPorFichasLista = new CrearFactoriaPorFichasLista();
+        formularioFactoriaPorFichasLista.crearGUI();
+    }//GEN-LAST:event_botonCrearFactoriaPorFichasListaActionPerformed
+
+    private void desactivarBotones() {
         menuPrincipal.botonCrearFactoriaSimple.setEnabled(false);
         menuPrincipal.botonCrearFactoriaPorFichas.setEnabled(false);
+         menuPrincipal.botonCrearFactoriaSimpleLista.setEnabled(false);
+        menuPrincipal.botonCrearFactoriaPorFichasLista.setEnabled(false);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -163,7 +194,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCrearFactoriaPorFichas;
+    private javax.swing.JButton botonCrearFactoriaPorFichasLista;
     private javax.swing.JButton botonCrearFactoriaSimple;
+    private javax.swing.JButton botonCrearFactoriaSimpleLista;
     private javax.swing.JButton botonSalir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
