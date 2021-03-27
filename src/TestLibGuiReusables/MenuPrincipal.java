@@ -117,41 +117,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonCrearFactoriaSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaSimpleActionPerformed
-
-        CrearFactoriaSimple formularioFactoriaSimple;
         desactivarBotones();
-        formularioFactoriaSimple = new CrearFactoriaSimple();
-        formularioFactoriaSimple.crearGUI();
-
-
+        CrearFactoriaSimple.crearGUI();
     }//GEN-LAST:event_botonCrearFactoriaSimpleActionPerformed
 
     private void botonCrearFactoriaPorFichasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaPorFichasActionPerformed
-        // TODO add your handling code here:
-        CrearFactoriaPorFichas formularioFactoriaPorfichas;
         desactivarBotones();
-        formularioFactoriaPorfichas = new CrearFactoriaPorFichas();
-        formularioFactoriaPorfichas.crearGUI();
+        CrearFactoriaPorFichas.crearGUI();
     }//GEN-LAST:event_botonCrearFactoriaPorFichasActionPerformed
 
     private void botonCrearFactoriaSimpleListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaSimpleListaActionPerformed
-        CrearFactoriaSimpleLista formularioFactoriaSimpleLista;
         desactivarBotones();
-        formularioFactoriaSimpleLista = new CrearFactoriaSimpleLista();
-        formularioFactoriaSimpleLista.crearGUI();
+        CrearFactoriaSimpleLista.crearGUI();
     }//GEN-LAST:event_botonCrearFactoriaSimpleListaActionPerformed
 
     private void botonCrearFactoriaPorFichasListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaPorFichasListaActionPerformed
-        CrearFactoriaPorFichasLista formularioFactoriaPorFichasLista;
         desactivarBotones();
-        formularioFactoriaPorFichasLista = new CrearFactoriaPorFichasLista();
-        formularioFactoriaPorFichasLista.crearGUI();
+        CrearFactoriaPorFichasLista.crearGUI();
     }//GEN-LAST:event_botonCrearFactoriaPorFichasListaActionPerformed
 
     private void desactivarBotones() {
         menuPrincipal.botonCrearFactoriaSimple.setEnabled(false);
         menuPrincipal.botonCrearFactoriaPorFichas.setEnabled(false);
-         menuPrincipal.botonCrearFactoriaSimpleLista.setEnabled(false);
+        menuPrincipal.botonCrearFactoriaSimpleLista.setEnabled(false);
         menuPrincipal.botonCrearFactoriaPorFichasLista.setEnabled(false);
     }
 

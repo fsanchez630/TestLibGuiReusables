@@ -30,7 +30,7 @@ public class CrearFactoriaPorFichas extends LibFormularioPorFichas implements Ac
      *
      * @return
      */
-    public LibFormularioExtensible CrearFormularioSimple() {
+    public LibFormularioExtensible CrearFactoriaPorFichas() {
         initComponents();
 
         factoriaFormularios = new LibFactoriaFormularios();
@@ -64,10 +64,10 @@ public class CrearFactoriaPorFichas extends LibFormularioPorFichas implements Ac
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void crearGUI() {
+    public static void crearGUI() {
 
-        factoriaFormularios = new LibFactoriaFormularios();
-        formularioExtensible = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS, "Factoria Por Fichas");
+        
+        formularioExtensible = new CrearFactoriaPorFichas();
 
         observadorEventos = new LibListaObservadoresEventos();
         observadorEventos.nuevoActionListener(formularioExtensible);

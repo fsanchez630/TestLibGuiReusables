@@ -25,7 +25,15 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
     private static FormSimpleDis1 formularioSimpleD1;
     private static LibListaObservadoresEventos observadorEventos;
 
-  
+    public LibFormularioExtensible CrearFactoriaSimple() {
+        initComponents();
+
+        factoriaFormularios = new LibFactoriaFormularios();
+
+        LibFormularioExtensible retorno;
+        retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE, "Factoria SIMPLE");
+        return retorno;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,10 +60,10 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void crearGUI() {
+    public static void crearGUI() {
 
-        factoriaFormularios = new LibFactoriaFormularios();
-        formularioExtensible = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE, "Factoria Simple");
+        
+        formularioExtensible = new CrearFactoriaSimple();
         observadorEventos = new LibListaObservadoresEventos();
         observadorEventos.nuevoActionListener(formularioExtensible);
         observadorEventos.nuevoChangeListener(formularioExtensible);

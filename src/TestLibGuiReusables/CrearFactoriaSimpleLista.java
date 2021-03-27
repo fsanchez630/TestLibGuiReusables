@@ -26,7 +26,15 @@ public class CrearFactoriaSimpleLista extends LibFormularioSimple implements Act
     private static FormSimpleDis1 formularioSimpleD1;
     private static LibListaObservadoresEventos observadorEventos;
 
-  
+    public LibFormularioExtensible CrearFactoriaSimpleLista() {
+        initComponents();
+
+        factoriaFormularios = new LibFactoriaFormularios();
+
+        LibFormularioExtensible retorno;
+        retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE, "Factoria SIMPLE");
+        return retorno;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,11 +61,10 @@ public class CrearFactoriaSimpleLista extends LibFormularioSimple implements Act
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void crearGUI() {
+    public static void crearGUI() {
 
-
-        factoriaFormularios = new LibFactoriaFormularios();
-        formularioExtensible = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE, "Factoria Simple");
+        
+        formularioExtensible = new CrearFactoriaSimpleLista();
         observadorEventos = new LibListaObservadoresEventos();
         observadorEventos.nuevoActionListener(formularioExtensible);
         observadorEventos.nuevoChangeListener(formularioExtensible);
@@ -67,11 +74,10 @@ public class CrearFactoriaSimpleLista extends LibFormularioSimple implements Act
 
         ArrayList<LibFormularioExtensible> listaHijos;
         listaHijos = new ArrayList<LibFormularioExtensible>();
-        
+
         listaHijos.add(formularioSimpleD0);
         listaHijos.add(formularioSimpleD1);
         formularioExtensible.addListaHijosExtensibles(listaHijos, "Formulario1");
-        
 
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
