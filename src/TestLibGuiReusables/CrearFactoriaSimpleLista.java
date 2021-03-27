@@ -10,6 +10,7 @@ import LibGuiReusables.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -82,8 +83,13 @@ public class CrearFactoriaSimpleLista extends LibFormularioSimple implements Act
 
         listaHijos.add(formularioSimpleD0);
         listaHijos.add(formularioSimpleD1);
+        
+        try{
         formularioExtensible.addListaHijosExtensibles(listaHijos, "Formulario1");
-
+        } catch (Exception e) {            
+           JOptionPane.showMessageDialog(formularioExtensible,e.getMessage());                    
+        }
+        
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
 

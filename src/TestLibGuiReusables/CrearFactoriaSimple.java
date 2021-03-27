@@ -9,6 +9,7 @@ import LibGuiReusables.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -77,8 +78,12 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
         formularioSimpleD1 = new FormSimpleDis1();
         formularioSimpleD1.setListaObservadores(listaObs);
 
-        formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
-        formularioExtensible.addHijoExtensible(formularioSimpleD1, "Formulario2");
+        try {
+            formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
+            formularioExtensible.addHijoExtensible(formularioSimpleD1, "Formulario2");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensible, e.getMessage());
+        }
 
         formularioExtensible.configurarFormulario();
         formularioExtensible.setVisible(true);
