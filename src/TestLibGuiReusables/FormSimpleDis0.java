@@ -2,20 +2,20 @@ package TestLibGuiReusables;
 
 import LibGuiReusables.IComunicable;
 import LibGuiReusables.IValidable;
-import LibGuiReusables.LibListaObservadoresEventos;
+import java.awt.event.ActionListener;
+import javax.swing.event.ChangeListener;
 
-public class FormSimpleDis0 extends LibGuiReusables.LibFormularioSimple implements IValidable, IComunicable {
+public class FormSimpleDis0 extends LibGuiReusables.LibFormularioSimple implements ActionListener, ChangeListener,IValidable, IComunicable {
 
-    private LibListaObservadoresEventos observadores;
+//    private LibListaObservadoresEventos observadores;
 
     /**
      * Creates new form Find
      *
-     * @param obs
      */
-    public FormSimpleDis0(LibListaObservadoresEventos obs) {
+    public FormSimpleDis0() {
         initComponents();
-        this.observadores = obs;
+        
     }
 
     /**
@@ -141,6 +141,8 @@ public class FormSimpleDis0 extends LibGuiReusables.LibFormularioSimple implemen
         }
         System.out.println("recuperar valor");
     }
+
+   
 
    
 }

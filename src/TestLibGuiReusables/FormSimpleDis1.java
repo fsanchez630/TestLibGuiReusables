@@ -2,21 +2,17 @@ package TestLibGuiReusables;
 
 import LibGuiReusables.IComunicable;
 import LibGuiReusables.IValidable;
-import LibGuiReusables.LibListaObservadoresEventos;
+import java.awt.event.ActionListener;
+import javax.swing.event.ChangeListener;
 
-public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implements IComunicable, IValidable {
-
-    private LibListaObservadoresEventos observadores;
+public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implements ActionListener, ChangeListener, IComunicable, IValidable {
 
     /**
      * Creates new form Find
-     * @param obs
      */
-    
-
-    public FormSimpleDis1(LibListaObservadoresEventos obs) {
+    public FormSimpleDis1() {
         initComponents();
-        this.observadores = obs;
+        
     }
 
     /**
@@ -95,11 +91,13 @@ public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implemen
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
-        observadores.disparaStateChanged(evt);
+        this.getListaObservadores().disparaStateChanged(evt);
+// observadores.disparaStateChanged(evt);
     }//GEN-LAST:event_jSpinner1StateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        observadores.disparaActionEvent(evt);
+        this.getListaObservadores().disparaActionEvent(evt);
+//observadores.disparaActionEvent(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -115,13 +113,11 @@ public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implemen
     public void cambiarValor(String nombreComponente, Object valor) {
         System.out.println("cambiar valor");
     }
-
+    
     @Override
     public void recuperarValorExterno(String nombreComponente, Object valor) {
-
+        
         System.out.println("recuperar valor");
     }
-
-   
-
+    
 }

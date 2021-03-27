@@ -137,10 +137,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCrearFactoriaPorFichasListaActionPerformed
 
     private void desactivarBotones() {
+        /*
         menuPrincipal.botonCrearFactoriaSimple.setEnabled(false);
         menuPrincipal.botonCrearFactoriaPorFichas.setEnabled(false);
         menuPrincipal.botonCrearFactoriaSimpleLista.setEnabled(false);
         menuPrincipal.botonCrearFactoriaPorFichasLista.setEnabled(false);
+        */
     }
 
     /**

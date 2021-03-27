@@ -23,7 +23,7 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
     private static LibFactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
-    private static LibListaObservadoresEventos observadorEventos;
+    private static LibListaObservadoresEventos listaObs;
 
     public LibFormularioExtensible CrearFactoriaSimple() {
         initComponents();
@@ -62,14 +62,20 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
 
     public static void crearGUI() {
 
-        
         formularioExtensible = new CrearFactoriaSimple();
-        observadorEventos = new LibListaObservadoresEventos();
-        observadorEventos.nuevoActionListener(formularioExtensible);
-        observadorEventos.nuevoChangeListener(formularioExtensible);
 
-        formularioSimpleD0 = new FormSimpleDis0(observadorEventos);
-        formularioSimpleD1 = new FormSimpleDis1(observadorEventos);
+        // crear lista observadores de eventos e incluir el formulario
+        listaObs = new LibListaObservadoresEventos();
+        listaObs.nuevoActionListener(formularioExtensible);
+        listaObs.nuevoChangeListener(formularioExtensible);
+
+        formularioExtensible.setListaObservadores(listaObs);
+
+        formularioSimpleD0 = new FormSimpleDis0();
+        formularioSimpleD0.setListaObservadores(listaObs);
+
+        formularioSimpleD1 = new FormSimpleDis1();
+        formularioSimpleD1.setListaObservadores(listaObs);
 
         formularioExtensible.addHijoExtensible(formularioSimpleD0, "Formulario1");
         formularioExtensible.addHijoExtensible(formularioSimpleD1, "Formulario2");
