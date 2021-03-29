@@ -37,7 +37,7 @@ public class CrearFactoriaPorFichasLista extends LibFormularioPorFichas implemen
 
         factoriaFormularios = new LibFactoriaFormularios();
 
-        LibFormularioExtensible retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS, "Factoria Por Fichas");
+        LibFormularioExtensible retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS);
         return retorno;
     }
 
@@ -69,7 +69,7 @@ public class CrearFactoriaPorFichasLista extends LibFormularioPorFichas implemen
     public static void crearGUI() {
 
         formularioExtensible = new CrearFactoriaPorFichasLista();
-
+        formularioExtensible.setnombreContenedor("Factoria por Fichas con Lista");
         // crear lista observadores de eventos e incluir el formulario
         listaObs = new LibListaObservadoresEventos();
         listaObs.nuevoActionListener(formularioExtensible);
@@ -88,11 +88,11 @@ public class CrearFactoriaPorFichasLista extends LibFormularioPorFichas implemen
 
         listaHijos.add(formularioSimpleD0);
         listaHijos.add(formularioSimpleD1);
-              
-        try{
-        formularioExtensible.addListaHijosExtensibles(listaHijos, "Formulario1");
-        } catch (Exception e) {            
-           JOptionPane.showMessageDialog(formularioExtensible,e.getMessage());                    
+
+        try {
+            formularioExtensible.addListaHijosExtensibles(listaHijos, "Formulario1");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensible, e.getMessage());
         }
 
         formularioExtensible.configurarFormulario();

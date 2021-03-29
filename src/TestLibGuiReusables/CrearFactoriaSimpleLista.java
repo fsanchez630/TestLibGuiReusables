@@ -33,7 +33,7 @@ public class CrearFactoriaSimpleLista extends LibFormularioSimple implements Act
         factoriaFormularios = new LibFactoriaFormularios();
 
         LibFormularioExtensible retorno;
-        retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE, "Factoria SIMPLE");
+        retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE);
         return retorno;
     }
 
@@ -66,6 +66,7 @@ public class CrearFactoriaSimpleLista extends LibFormularioSimple implements Act
 
         
         formularioExtensible = new CrearFactoriaSimpleLista();
+        formularioExtensible.setnombreContenedor("Factoria SIMPLE con Lista");
         // crear lista observadores de eventos e incluir el formulario
         listaObs = new LibListaObservadoresEventos();
         listaObs.nuevoActionListener(formularioExtensible);

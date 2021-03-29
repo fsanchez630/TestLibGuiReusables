@@ -36,7 +36,7 @@ public class CrearFactoriaPorFichas extends LibFormularioPorFichas implements Ac
 
         factoriaFormularios = new LibFactoriaFormularios();
 
-        LibFormularioExtensible retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS, "Factoria Por Fichas");
+        LibFormularioExtensible retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS);
         return retorno;
     }
 
@@ -69,6 +69,7 @@ public class CrearFactoriaPorFichas extends LibFormularioPorFichas implements Ac
 
         
         formularioExtensible = new CrearFactoriaPorFichas();
+        formularioExtensible.setnombreContenedor("Factoria Por Fichas");
 
         // crear lista observadores de eventos e incluir el formulario
         listaObs = new LibListaObservadoresEventos();
