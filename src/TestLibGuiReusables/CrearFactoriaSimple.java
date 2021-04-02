@@ -95,25 +95,9 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    @Override
-    public void aceptar() {
-        System.out.println("aceptar");
-    }
+    
 
-    @Override
-    public void cancelar() {
-        System.out.println("cancelar");
-    }
-
-    @Override
-    public void cambiarValor(String nombreComponente, Object valor) {
-        System.out.println("cambiar valor");
-    }
-
-    @Override
-    public void recuperarValorExterno(String nombreComponente, Object valor) {
-        System.out.println("recuperar valor externo");
-    }
+   
 
     @Override
     public void actionPerformed(ActionEvent evt) {
