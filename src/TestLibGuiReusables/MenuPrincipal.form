@@ -32,6 +32,7 @@
                   <Component id="botonCrearFactoriaSimple" alignment="1" pref="281" max="32767" attributes="0"/>
                   <Component id="botonCrearFactoriaPorFichas" alignment="1" max="32767" attributes="0"/>
                   <Component id="botonCrearFactoriaPorFichasLista" max="32767" attributes="0"/>
+                  <Component id="botonCrearFactoriaaArbol" alignment="1" pref="281" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="68" max="32767" attributes="0"/>
           </Group>
@@ -44,12 +45,14 @@
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Component id="botonCrearFactoriaSimple" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="botonCrearFactoriaPorFichas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="botonCrearFactoriaSimpleLista" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="botonCrearFactoriaPorFichas" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="botonCrearFactoriaPorFichasLista" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="botonCrearFactoriaaArbol" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Component id="botonSalir" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
           </Group>
@@ -99,6 +102,15 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearFactoriaPorFichasListaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonCrearFactoriaaArbol">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Crear Factoria Arbol"/>
+        <Property name="actionCommand" type="java.lang.String" value="Crear Factoria Arbol"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearFactoriaaArbolActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

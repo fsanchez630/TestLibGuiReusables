@@ -36,6 +36,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonCrearFactoriaPorFichas = new javax.swing.JButton();
         botonCrearFactoriaSimpleLista = new javax.swing.JButton();
         botonCrearFactoriaPorFichasLista = new javax.swing.JButton();
+        botonCrearFactoriaaArbol = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +77,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonCrearFactoriaaArbol.setText("Crear Factoria Arbol");
+        botonCrearFactoriaaArbol.setActionCommand("Crear Factoria Arbol");
+        botonCrearFactoriaaArbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearFactoriaaArbolActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,7 +97,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCrearFactoriaSimple, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(botonCrearFactoriaPorFichas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonCrearFactoriaPorFichasLista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botonCrearFactoriaPorFichasLista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonCrearFactoriaaArbol, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
                 .addGap(0, 68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,12 +108,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addComponent(botonCrearFactoriaSimple)
                 .addGap(18, 18, 18)
-                .addComponent(botonCrearFactoriaPorFichas)
-                .addGap(18, 18, 18)
                 .addComponent(botonCrearFactoriaSimpleLista)
                 .addGap(18, 18, 18)
+                .addComponent(botonCrearFactoriaPorFichas)
+                .addGap(18, 18, 18)
                 .addComponent(botonCrearFactoriaPorFichasLista)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonCrearFactoriaaArbol)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(35, 35, 35))
         );
@@ -136,13 +148,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CrearFactoriaPorFichasLista.crearGUI();
     }//GEN-LAST:event_botonCrearFactoriaPorFichasListaActionPerformed
 
+    private void botonCrearFactoriaaArbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaaArbolActionPerformed
+        desactivarBotones();
+        CrearFactoriaArbol.crearGUI();
+    }//GEN-LAST:event_botonCrearFactoriaaArbolActionPerformed
+
     private void desactivarBotones() {
         /*
         menuPrincipal.botonCrearFactoriaSimple.setEnabled(false);
-        menuPrincipal.botonCrearFactoriaPorFichas.setEnabled(false);
         menuPrincipal.botonCrearFactoriaSimpleLista.setEnabled(false);
+        menuPrincipal.botonCrearFactoriaPorFichas.setEnabled(false);        
         menuPrincipal.botonCrearFactoriaPorFichasLista.setEnabled(false);
-        */
+        menuPrincipal.botonCrearFactoriaArbol.setEnabled(false);
+         */
     }
 
     /**
@@ -181,12 +199,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
     }
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCrearFactoriaPorFichas;
     private javax.swing.JButton botonCrearFactoriaPorFichasLista;
     private javax.swing.JButton botonCrearFactoriaSimple;
     private javax.swing.JButton botonCrearFactoriaSimpleLista;
+    private javax.swing.JButton botonCrearFactoriaaArbol;
     private javax.swing.JButton botonSalir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
