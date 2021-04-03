@@ -40,45 +40,75 @@ public class FormSimpleDis0 extends LibGuiReusables.LibFormularioSimple implemen
         setTitle("Find");
 
         jPanel1.setMinimumSize(new java.awt.Dimension(531, 73));
-        jPanel1.setLayout(null);
 
         jLabel1.setText("Find What:");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(12, 4, 63, 16);
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(80, 1, 349, 22);
 
         jCheckBox1.setText("Match Case");
         jCheckBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(jCheckBox1);
-        jCheckBox1.setBounds(80, 32, 87, 17);
 
         jCheckBox2.setText("Wrap Around");
         jCheckBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(jCheckBox2);
-        jCheckBox2.setBounds(184, 32, 97, 17);
 
         jCheckBox3.setText("Whole Words");
         jCheckBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox3.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(jCheckBox3);
-        jCheckBox3.setBounds(80, 56, 97, 17);
 
         jCheckBox4.setText("Search Backwards");
         jCheckBox4.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jCheckBox4.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jPanel1.add(jCheckBox4);
-        jCheckBox4.setBounds(184, 56, 125, 17);
 
         jButton1.setText("Find");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(436, 0, 71, 25);
 
         jButton2.setText("Cancel");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(436, 32, 71, 25);
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(12, 12, 12)
+                .add(jLabel1)
+                .add(5, 5, 5)
+                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 349, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(7, 7, 7)
+                .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 71, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(80, 80, 80)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jCheckBox1)
+                    .add(jCheckBox3))
+                .add(7, 7, 7)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jCheckBox2)
+                    .add(jCheckBox4))
+                .add(127, 127, 127)
+                .add(jButton2))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(4, 4, 4)
+                        .add(jLabel1))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(1, 1, 1)
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jButton1))
+                .add(7, 7, 7)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jCheckBox1)
+                        .add(7, 7, 7)
+                        .add(jCheckBox3))
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(jCheckBox2)
+                        .add(7, 7, 7)
+                        .add(jCheckBox4))
+                    .add(jButton2)))
+        );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
