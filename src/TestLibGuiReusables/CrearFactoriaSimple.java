@@ -18,21 +18,21 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class CrearFactoriaSimple extends LibFormularioSimple implements ActionListener, ChangeListener {
+public class CrearFactoriaSimple extends FormularioSimple implements ActionListener, ChangeListener {
 
-    private static LibFormularioExtensible formularioExtensible;
-    private static LibFactoriaFormularios factoriaFormularios;
+    private static FormularioExtensible formularioExtensible;
+    private static FactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
-    private static LibListaObservadoresEventos listaObs;
+    private static ListaObservadoresEventos listaObs;
 
-    public LibFormularioExtensible CrearFactoriaSimple() {
+    public FormularioExtensible CrearFactoriaSimple() {
         initComponents();
 
-        factoriaFormularios = new LibFactoriaFormularios();
+        factoriaFormularios = new FactoriaFormularios();
 
-        LibFormularioExtensible retorno;
-        retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE);
+        FormularioExtensible retorno;
+        retorno = factoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
         return retorno;
     }
 
@@ -68,7 +68,7 @@ public class CrearFactoriaSimple extends LibFormularioSimple implements ActionLi
         formularioExtensible.setnombreContenedor("Factoria SIMPLE");
 
         // crear lista observadores de eventos e incluir el formulario
-        listaObs = new LibListaObservadoresEventos();
+        listaObs = new ListaObservadoresEventos();
         listaObs.nuevoActionListener(formularioExtensible);
         listaObs.nuevoChangeListener(formularioExtensible);
 

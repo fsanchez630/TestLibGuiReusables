@@ -1,11 +1,11 @@
 package TestLibGuiReusables;
 
-import LibGuiReusables.IComunicable;
-import LibGuiReusables.IValidable;
 import java.awt.event.ActionListener;
 import javax.swing.event.ChangeListener;
+import LibGuiReusables.Comunicable;
+import LibGuiReusables.Validable;
 
-public class FormSimpleDis0 extends LibGuiReusables.LibFormularioSimple implements ActionListener, ChangeListener,IValidable, IComunicable {
+public class FormSimpleDis0 extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener,Validable, Comunicable {
 
 //    private LibListaObservadoresEventos observadores;
 

@@ -19,25 +19,25 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class CrearFactoriaPorFichasLista extends LibFormularioPorFichas implements ActionListener, ChangeListener {
+public class CrearFactoriaPorFichasLista extends FormularioPorFichas implements ActionListener, ChangeListener {
 
-    private static LibFormularioExtensible formularioExtensible;
-    private static LibFactoriaFormularios factoriaFormularios;
+    private static FormularioExtensible formularioExtensible;
+    private static FactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
-    private static LibListaObservadoresEventos listaObs;
+    private static ListaObservadoresEventos listaObs;
 
     /**
      * Creates new form CrearFactoriaSimple
      *
      * @return
      */
-    public LibFormularioExtensible CrearFactoriaPorFichasLista() {
+    public FormularioExtensible CrearFactoriaPorFichasLista() {
         initComponents();
 
-        factoriaFormularios = new LibFactoriaFormularios();
+        factoriaFormularios = new FactoriaFormularios();
 
-        LibFormularioExtensible retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.PORFICHAS);
+        FormularioExtensible retorno = factoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.PORFICHAS);
         return retorno;
     }
 
@@ -71,7 +71,7 @@ public class CrearFactoriaPorFichasLista extends LibFormularioPorFichas implemen
         formularioExtensible = new CrearFactoriaPorFichasLista();
         formularioExtensible.setnombreContenedor("Factoria por Fichas con Lista");
         // crear lista observadores de eventos e incluir el formulario
-        listaObs = new LibListaObservadoresEventos();
+        listaObs = new ListaObservadoresEventos();
         listaObs.nuevoActionListener(formularioExtensible);
         listaObs.nuevoChangeListener(formularioExtensible);
 
@@ -83,8 +83,8 @@ public class CrearFactoriaPorFichasLista extends LibFormularioPorFichas implemen
         formularioSimpleD1 = new FormSimpleDis1();
         formularioSimpleD1.setListaObservadores(listaObs);
 
-        ArrayList<LibFormularioExtensible> listaHijos;
-        listaHijos = new ArrayList<LibFormularioExtensible>();
+        ArrayList<FormularioExtensible> listaHijos;
+        listaHijos = new ArrayList<FormularioExtensible>();
 
         listaHijos.add(formularioSimpleD0);
         listaHijos.add(formularioSimpleD1);

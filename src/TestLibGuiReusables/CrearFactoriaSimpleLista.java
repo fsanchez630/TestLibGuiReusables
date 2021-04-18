@@ -19,21 +19,21 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class CrearFactoriaSimpleLista extends LibFormularioSimple implements ActionListener, ChangeListener {
+public class CrearFactoriaSimpleLista extends FormularioSimple implements ActionListener, ChangeListener {
 
-    private static LibFormularioExtensible formularioExtensible;
-    private static LibFactoriaFormularios factoriaFormularios;
+    private static FormularioExtensible formularioExtensible;
+    private static FactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
-    private static LibListaObservadoresEventos listaObs;
+    private static ListaObservadoresEventos listaObs;
 
-    public LibFormularioExtensible CrearFactoriaSimpleLista() {
+    public FormularioExtensible CrearFactoriaSimpleLista() {
         initComponents();
 
-        factoriaFormularios = new LibFactoriaFormularios();
+        factoriaFormularios = new FactoriaFormularios();
 
-        LibFormularioExtensible retorno;
-        retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.SIMPLE);
+        FormularioExtensible retorno;
+        retorno = factoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
         return retorno;
     }
 
@@ -68,7 +68,7 @@ public class CrearFactoriaSimpleLista extends LibFormularioSimple implements Act
         formularioExtensible = new CrearFactoriaSimpleLista();
         formularioExtensible.setnombreContenedor("Factoria SIMPLE con Lista");
         // crear lista observadores de eventos e incluir el formulario
-        listaObs = new LibListaObservadoresEventos();
+        listaObs = new ListaObservadoresEventos();
         listaObs.nuevoActionListener(formularioExtensible);
         listaObs.nuevoChangeListener(formularioExtensible);
 
@@ -79,8 +79,8 @@ public class CrearFactoriaSimpleLista extends LibFormularioSimple implements Act
 
         formularioSimpleD1 = new FormSimpleDis1();
         formularioSimpleD1.setListaObservadores(listaObs);
-        ArrayList<LibFormularioExtensible> listaHijos;
-        listaHijos = new ArrayList<LibFormularioExtensible>();
+        ArrayList<FormularioExtensible> listaHijos;
+        listaHijos = new ArrayList<FormularioExtensible>();
 
         listaHijos.add(formularioSimpleD0);
         listaHijos.add(formularioSimpleD1);

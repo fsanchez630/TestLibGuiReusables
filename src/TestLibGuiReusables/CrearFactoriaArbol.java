@@ -18,21 +18,21 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class CrearFactoriaArbol extends LibFormularioArbol implements ActionListener, ChangeListener {
+public class CrearFactoriaArbol extends FormularioArbol implements ActionListener, ChangeListener {
 
-    private static LibFormularioExtensible formularioExtensible;
-    private static LibFactoriaFormularios factoriaFormularios;
+    private static FormularioExtensible formularioExtensible;
+    private static FactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
-    private static LibListaObservadoresEventos listaObs;
+    private static ListaObservadoresEventos listaObs;
 
-    public LibFormularioExtensible CrearFactoriaArbol() {
+    public FormularioExtensible CrearFactoriaArbol() {
         initComponents();
 
-        factoriaFormularios = new LibFactoriaFormularios();
+        factoriaFormularios = new FactoriaFormularios();
 
-        LibFormularioExtensible retorno;
-        retorno = factoriaFormularios.crearFormulario(LibFormularioExtensible.TipoContenedor.ARBOL);
+        FormularioExtensible retorno;
+        retorno = factoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
         return retorno;
     }
 
@@ -68,7 +68,7 @@ public class CrearFactoriaArbol extends LibFormularioArbol implements ActionList
         formularioExtensible.setnombreContenedor("Factoria ARBOL");
 
         // crear lista observadores de eventos e incluir el formulario
-        listaObs = new LibListaObservadoresEventos();
+        listaObs = new ListaObservadoresEventos();
         listaObs.nuevoActionListener(formularioExtensible);
         listaObs.nuevoChangeListener(formularioExtensible);
 

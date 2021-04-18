@@ -1,11 +1,11 @@
 package TestLibGuiReusables;
 
-import LibGuiReusables.IComunicable;
-import LibGuiReusables.IValidable;
 import java.awt.event.ActionListener;
 import javax.swing.event.ChangeListener;
+import LibGuiReusables.Comunicable;
+import LibGuiReusables.Validable;
 
-public class FormSimpleDis1 extends LibGuiReusables.LibFormularioSimple implements ActionListener, ChangeListener, IComunicable, IValidable {
+public class FormSimpleDis1 extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener, Comunicable, Validable {
 
     /**
      * Creates new form Find
