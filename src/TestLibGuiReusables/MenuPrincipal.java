@@ -37,6 +37,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonCrearFactoriaSimpleLista = new javax.swing.JButton();
         botonCrearFactoriaPorFichasLista = new javax.swing.JButton();
         botonCrearFactoriaaArbol = new javax.swing.JButton();
+        botonCrearFactoriaaArbolLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,10 +79,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonCrearFactoriaaArbol.setText("Crear Factoria Arbol");
-        botonCrearFactoriaaArbol.setActionCommand("Crear Factoria Arbol");
         botonCrearFactoriaaArbol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCrearFactoriaaArbolActionPerformed(evt);
+            }
+        });
+
+        botonCrearFactoriaaArbolLista.setText("Crear Factoria Arbol con Lista");
+        botonCrearFactoriaaArbolLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearFactoriaaArbolListaActionPerformed(evt);
             }
         });
 
@@ -98,8 +105,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(botonCrearFactoriaSimple, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(botonCrearFactoriaPorFichas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonCrearFactoriaPorFichasLista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonCrearFactoriaaArbol, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
-                .addGap(0, 68, Short.MAX_VALUE))
+                    .addComponent(botonCrearFactoriaaArbol, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(botonCrearFactoriaaArbolLista, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
+                .addGap(0, 66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +123,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(botonCrearFactoriaPorFichasLista)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botonCrearFactoriaaArbol)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(botonCrearFactoriaaArbolLista)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(35, 35, 35))
         );
@@ -152,6 +162,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         desactivarBotones();
         CrearFactoriaArbol.crearGUI();
     }//GEN-LAST:event_botonCrearFactoriaaArbolActionPerformed
+
+    private void botonCrearFactoriaaArbolListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaaArbolListaActionPerformed
+        desactivarBotones();
+        CrearFactoriaArbolLista.crearGUI();
+    }//GEN-LAST:event_botonCrearFactoriaaArbolListaActionPerformed
 
     private void desactivarBotones() {
         /*
@@ -206,6 +221,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonCrearFactoriaSimple;
     private javax.swing.JButton botonCrearFactoriaSimpleLista;
     private javax.swing.JButton botonCrearFactoriaaArbol;
+    private javax.swing.JButton botonCrearFactoriaaArbolLista;
     private javax.swing.JButton botonSalir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
