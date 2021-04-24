@@ -21,18 +21,15 @@ import javax.swing.event.ChangeListener;
 public class CrearFactoriaSimple extends FormularioSimple implements ActionListener, ChangeListener {
 
     private static FormularioExtensible formularioExtensible;
-    private static FactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
     private static ListaObservadoresEventos listaObs;
 
     public FormularioExtensible CrearFactoriaSimple() {
         initComponents();
-
-        factoriaFormularios = new FactoriaFormularios();
-
+        
         FormularioExtensible retorno;
-        retorno = factoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
         return retorno;
     }
 

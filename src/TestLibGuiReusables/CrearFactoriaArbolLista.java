@@ -23,7 +23,6 @@ import javax.swing.event.TreeSelectionListener;
 public class CrearFactoriaArbolLista extends FormularioArbol implements ActionListener, ChangeListener,TreeSelectionListener {
 
     private static FormularioExtensible formularioExtensible;
-    private static FactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
     private static ListaObservadoresEventos listaObs;
@@ -36,9 +35,8 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
     public FormularioExtensible CrearFactoriaArbolLista() {
         initComponents();
 
-        factoriaFormularios = new FactoriaFormularios();
-
-        FormularioExtensible retorno = factoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
+        
+        FormularioExtensible retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
         return retorno;
     }
 

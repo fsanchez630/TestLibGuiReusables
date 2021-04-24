@@ -22,18 +22,15 @@ import javax.swing.event.TreeSelectionListener;
 public class CrearFactoriaArbol extends FormularioArbol implements ActionListener, ChangeListener, TreeSelectionListener {
 
     private static FormularioExtensible formularioExtensible;
-    private static FactoriaFormularios factoriaFormularios;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
     private static ListaObservadoresEventos listaObs;
 
     public FormularioExtensible CrearFactoriaArbol() {
         initComponents();
-
-        factoriaFormularios = new FactoriaFormularios();
-
+       
         FormularioExtensible retorno;
-        retorno = factoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
+        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
         return retorno;
     }
 
