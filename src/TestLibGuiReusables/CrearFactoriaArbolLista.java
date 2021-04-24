@@ -25,6 +25,7 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
     private static FormularioExtensible formularioExtensible;
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
+    private static FormSimpleDis2 formularioSimpleD2;
     private static ListaObservadoresEventos listaObs;
 
     /**
@@ -83,12 +84,17 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
         formularioSimpleD1 = new FormSimpleDis1();
         formularioSimpleD1.setnombreContenedor("hijo 2");
         formularioSimpleD1.setListaObservadores(listaObs);
+        
+        formularioSimpleD2 = new FormSimpleDis2();
+        formularioSimpleD2.setnombreContenedor("hijo 3");
+        formularioSimpleD2.setListaObservadores(listaObs);
 
         ArrayList<FormularioExtensible> listaHijos;
         listaHijos = new ArrayList<FormularioExtensible>();
 
         listaHijos.add(formularioSimpleD0);
         listaHijos.add(formularioSimpleD1);
+        listaHijos.add(formularioSimpleD2);
 
         try {
             formularioExtensible.addListaHijosExtensibles(listaHijos, "Lista Hijos");
