@@ -22,15 +22,14 @@ import javax.swing.event.TreeSelectionListener;
 public class CrearFactoriaArbol extends FormularioArbol implements ActionListener, ChangeListener, TreeSelectionListener {
 
     private static FormularioExtensible formularioExtensibleArbol;
-    
+
     private static FormularioExtensible formularioExtensibleSimple;
-    
+
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
     private static FormSimpleDis2 formularioSimpleD2;
+    private static FormSimpleDis3 formularioSimpleD3;
     private static ListaObservadoresEventos listaObs;
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,15 +57,15 @@ public class CrearFactoriaArbol extends FormularioArbol implements ActionListene
     }// </editor-fold>//GEN-END:initComponents
 
     public static void crearGUI() {
+        incializar();
 
         formularioExtensibleArbol = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
 
         formularioExtensibleArbol.setnombreContenedor("Factoria ARBOL");
-        
+
         formularioExtensibleSimple = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
-        
+
         formularioExtensibleSimple.setnombreContenedor("formulario Conjunto");
-        
 
         // crear lista observadores de eventos e incluir el formulario
         listaObs = new ListaObservadoresEventos();
@@ -85,14 +84,16 @@ public class CrearFactoriaArbol extends FormularioArbol implements ActionListene
             formularioExtensibleSimple.addHijoExtensible(formularioSimpleD0, "Formulario 1");
             formularioExtensibleSimple.addHijoExtensible(formularioSimpleD1, "Formulario 2");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
+            JOptionPane.showMessageDialog(formularioExtensibleSimple, e.getMessage());
         }
+
+        // formularioExtensibleSimple.configurarFormulario();
 
         formularioSimpleD2 = new FormSimpleDis2();
         formularioSimpleD2.setListaObservadores(listaObs);
 
         try {
-            formularioExtensibleArbol.addHijoExtensible(formularioExtensibleSimple, formularioExtensibleSimple.getnombreContenedor());            
+            formularioExtensibleArbol.addHijoExtensible(formularioExtensibleSimple, formularioExtensibleSimple.getnombreContenedor());
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD2, "Formulario3");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
@@ -103,6 +104,17 @@ public class CrearFactoriaArbol extends FormularioArbol implements ActionListene
 
     }
 
+    
+    private static void incializar() {
+        formularioExtensibleArbol = null;
+        formularioSimpleD0 = null;
+        formularioSimpleD1 = null;
+        formularioSimpleD2 = null;
+        formularioSimpleD3 = null;
+        listaObs = null;;
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
