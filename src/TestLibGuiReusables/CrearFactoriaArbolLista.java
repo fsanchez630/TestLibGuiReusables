@@ -29,7 +29,7 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
     private static FormSimpleDis3 formularioSimpleD3;
     private static ListaObservadoresEventos listaObs;
 
-    private static ArrayList<FormularioExtensible> listaHijos ;
+    private static ArrayList<FormularioExtensible> listaHijos;
 
     /**
      * Creates new form CrearFactoriaSimple
@@ -61,8 +61,6 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-
     public static void crearGUI() {
 
         incializar();
@@ -76,9 +74,9 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
 
         formularioExtensibleArbol.setListaObservadores(listaObs);
 
-        // agregarFormSimples();
-//          agregarFormPorFichas();
-        agregarFormPorFichas2();
+        //        agregarFormSimples();
+        agregarFormPorFichas();
+        //agregarFormPorFichas2();
         try {
             formularioExtensibleArbol.addListaHijosExtensibles(listaHijos, "Lista Hijos");
         } catch (Exception e) {
@@ -89,7 +87,7 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
         formularioExtensibleArbol.setVisible(true);
 
     }
-    
+
     private static void incializar() {
         formularioExtensibleArbol = null;
         formularioSimpleD0 = null;

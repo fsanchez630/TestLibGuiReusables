@@ -24,6 +24,7 @@ public class CrearFactoriaArbol extends FormularioArbol implements ActionListene
     private static FormularioExtensible formularioExtensibleArbol;
 
     private static FormularioExtensible formularioExtensibleSimple;
+    private static FormularioExtensible formularioExtensibleSimple2;
 
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
@@ -63,16 +64,20 @@ public class CrearFactoriaArbol extends FormularioArbol implements ActionListene
 
         formularioExtensibleArbol.setnombreContenedor("Factoria ARBOL");
 
+        // crear lista observadores de eventos e incluir el formulario
+        listaObs = new ListaObservadoresEventos();
+
+        listaObs.nuevoActionListener(formularioExtensibleArbol);
+        listaObs.nuevoChangeListener(formularioExtensibleArbol);
+        formularioExtensibleArbol.setListaObservadores(listaObs);
+
         formularioExtensibleSimple = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
 
         formularioExtensibleSimple.setnombreContenedor("formulario Conjunto");
 
-        // crear lista observadores de eventos e incluir el formulario
-        listaObs = new ListaObservadoresEventos();
-        listaObs.nuevoActionListener(formularioExtensibleArbol);
-        listaObs.nuevoChangeListener(formularioExtensibleArbol);
-
-        formularioExtensibleArbol.setListaObservadores(listaObs);
+        listaObs.nuevoActionListener(formularioExtensibleSimple);
+        listaObs.nuevoChangeListener(formularioExtensibleSimple);
+        formularioExtensibleSimple.setListaObservadores(listaObs);
 
         formularioSimpleD0 = new FormSimpleDis0();
         formularioSimpleD0.setListaObservadores(listaObs);
@@ -87,14 +92,30 @@ public class CrearFactoriaArbol extends FormularioArbol implements ActionListene
             JOptionPane.showMessageDialog(formularioExtensibleSimple, e.getMessage());
         }
 
-        // formularioExtensibleSimple.configurarFormulario();
+        formularioExtensibleSimple2 = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+
+        formularioExtensibleSimple2.setnombreContenedor("formulario Conjunto 2");
+
+        listaObs.nuevoActionListener(formularioExtensibleSimple2);
+        listaObs.nuevoChangeListener(formularioExtensibleSimple2);
+        formularioExtensibleSimple2.setListaObservadores(listaObs);
 
         formularioSimpleD2 = new FormSimpleDis2();
         formularioSimpleD2.setListaObservadores(listaObs);
 
+        formularioSimpleD3 = new FormSimpleDis3();
+        formularioSimpleD3.setListaObservadores(listaObs);
+
+        try {
+            formularioExtensibleSimple2.addHijoExtensible(formularioSimpleD2, "Formulario 3");
+            formularioExtensibleSimple2.addHijoExtensible(formularioSimpleD3, "Formulario 4");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensibleSimple2, e.getMessage());
+        }
+
         try {
             formularioExtensibleArbol.addHijoExtensible(formularioExtensibleSimple, formularioExtensibleSimple.getnombreContenedor());
-            formularioExtensibleArbol.addHijoExtensible(formularioSimpleD2, "Formulario3");
+            formularioExtensibleArbol.addHijoExtensible(formularioExtensibleSimple2, formularioExtensibleSimple2.getnombreContenedor());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
         }
@@ -104,17 +125,18 @@ public class CrearFactoriaArbol extends FormularioArbol implements ActionListene
 
     }
 
-    
     private static void incializar() {
         formularioExtensibleArbol = null;
+        formularioExtensibleSimple = null;
+        formularioExtensibleSimple2 = null;
         formularioSimpleD0 = null;
         formularioSimpleD1 = null;
         formularioSimpleD2 = null;
         formularioSimpleD3 = null;
         listaObs = null;;
-        
+
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

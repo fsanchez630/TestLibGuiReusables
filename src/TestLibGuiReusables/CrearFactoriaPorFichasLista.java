@@ -22,8 +22,8 @@ import javax.swing.event.ChangeListener;
 public class CrearFactoriaPorFichasLista extends FormularioPorFichas implements ActionListener, ChangeListener {
 
     private static FormularioExtensible formularioExtensible;
-    private static FormSimpleDis0 formularioSimpleD0;
-    private static FormSimpleDis1 formularioSimpleD1;
+    private static FormSimpleDis2 formularioSimpleD0;
+    private static FormSimpleDis3 formularioSimpleD1;
     private static ListaObservadoresEventos listaObs;
 
     /**
@@ -74,10 +74,10 @@ public class CrearFactoriaPorFichasLista extends FormularioPorFichas implements 
 
         formularioExtensible.setListaObservadores(listaObs);
 
-        formularioSimpleD0 = new FormSimpleDis0();
+        formularioSimpleD0 = new FormSimpleDis2();
         formularioSimpleD0.setListaObservadores(listaObs);
 
-        formularioSimpleD1 = new FormSimpleDis1();
+        formularioSimpleD1 = new FormSimpleDis3();
         formularioSimpleD1.setListaObservadores(listaObs);
 
         ArrayList<FormularioExtensible> listaHijos;
