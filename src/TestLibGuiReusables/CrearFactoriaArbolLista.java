@@ -27,6 +27,8 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
     private static FormSimpleDis1 formularioSimpleD1;
     private static FormSimpleDis2 formularioSimpleD2;
     private static FormSimpleDis3 formularioSimpleD3;
+    private static FormSimpleDis4 formularioSimpleD4;
+    private static FormSimpleDis5 formularioSimpleD5;
     private static ListaObservadoresEventos listaObs;
 
     private static ArrayList<FormularioExtensible> listaHijos;
@@ -75,8 +77,8 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
         formularioExtensibleArbol.setListaObservadores(listaObs);
 
         //        agregarFormSimples();
-        agregarFormPorFichas();
-        //agregarFormPorFichas2();
+        // agregarFormPorFichas();
+        agregarFormPorFichas2();
         try {
             formularioExtensibleArbol.addListaHijosExtensibles(listaHijos, "Lista Hijos");
         } catch (Exception e) {
@@ -94,6 +96,8 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
         formularioSimpleD1 = null;
         formularioSimpleD2 = null;
         formularioSimpleD3 = null;
+        formularioSimpleD4 = null;
+        formularioSimpleD5 = null;
         listaObs = null;;
         listaHijos = null;
     }
@@ -172,10 +176,29 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
     }
 
     private static void agregarFormPorFichas2() {
+        //   CREAR FROMULARIO simple 1
+        FormularioExtensible formularioExtensibleSimple = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+        formularioExtensibleSimple.setnombreContenedor("FORMULARIO SIMPLE");
+        formularioExtensibleSimple.setListaObservadores(listaObs);
+
+        formularioSimpleD4 = new FormSimpleDis4();
+        formularioSimpleD4.setnombreContenedor("hijo 5");
+        formularioSimpleD4.setListaObservadores(listaObs);
+
+        formularioSimpleD5 = new FormSimpleDis5();
+        formularioSimpleD5.setnombreContenedor("hijo 6");
+        formularioSimpleD5.setListaObservadores(listaObs);
+
+        try {
+            formularioExtensibleSimple.addHijoExtensible(formularioSimpleD4, formularioSimpleD4.getnombreContenedor());
+            formularioExtensibleSimple.addHijoExtensible(formularioSimpleD5, formularioSimpleD5.getnombreContenedor());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensibleSimple, e.getMessage());
+        }
 
 //        CREAR FROMULARIO POR FICHAS 1
         FormularioExtensible formularioExtensiblePorFichas = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.PORFICHAS);
-        formularioExtensiblePorFichas.setnombreContenedor("FORMULARIO POR FICHAS 1");
+        formularioExtensiblePorFichas.setnombreContenedor("FORMULARIO POR FICHAS 2");
         formularioExtensiblePorFichas.setListaObservadores(listaObs);
 
         formularioSimpleD0 = new FormSimpleDis0();
@@ -189,13 +212,14 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
         try {
             formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD0, formularioSimpleD0.getnombreContenedor());
             formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD1, formularioSimpleD1.getnombreContenedor());
+            formularioExtensiblePorFichas.addHijoExtensible(formularioExtensibleSimple, formularioExtensibleSimple.getnombreContenedor());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensiblePorFichas, e.getMessage());
         }
 
-//        CREAR FROMULARIO POR FICHAS 2        
+//        CREAR FROMULARIO simple       
         FormularioExtensible formularioExtensiblePorFichas2 = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.PORFICHAS);
-        formularioExtensiblePorFichas2.setnombreContenedor("FORMULARIO POR FICHAS 2");
+        formularioExtensiblePorFichas2.setnombreContenedor("FORMULARIO POR FICHAS 1");
         formularioExtensiblePorFichas2.setListaObservadores(listaObs);
 
         formularioSimpleD2 = new FormSimpleDis2();
@@ -210,6 +234,7 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
             formularioExtensiblePorFichas2.addHijoExtensible(formularioSimpleD2, formularioSimpleD2.getnombreContenedor());
             formularioExtensiblePorFichas2.addHijoExtensible(formularioSimpleD3, formularioSimpleD3.getnombreContenedor());
             formularioExtensiblePorFichas2.addHijoExtensible(formularioExtensiblePorFichas, formularioExtensiblePorFichas.getnombreContenedor());
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensiblePorFichas2, e.getMessage());
         }
