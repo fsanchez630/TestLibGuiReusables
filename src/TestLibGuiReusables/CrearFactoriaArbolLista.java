@@ -23,6 +23,12 @@ import javax.swing.event.TreeSelectionListener;
 public class CrearFactoriaArbolLista extends FormularioArbol implements ActionListener, ChangeListener, TreeSelectionListener {
 
     private static FormularioExtensible formularioExtensibleArbol;
+
+    private static FormularioExtensible formularioExtensibleSimple;
+    private static FormularioExtensible formularioExtensibleSimple2;
+    private static FormularioExtensible formularioExtensibleFichas;
+    private static FormularioExtensible formularioExtensibleArbol2;
+
     private static FormSimpleDis0 formularioSimpleD0;
     private static FormSimpleDis1 formularioSimpleD1;
     private static FormSimpleDis2 formularioSimpleD2;
@@ -66,21 +72,25 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
     public static void crearGUI() {
 
         incializar();
-        listaHijos = new ArrayList<FormularioExtensible>();
-        formularioExtensibleArbol = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
-        formularioExtensibleArbol.setnombreContenedor("Factoria Arbol con Lista");
         // crear lista observadores de eventos e incluir el formulario
         listaObs = new ListaObservadoresEventos();
+        listaHijos = new ArrayList<FormularioExtensible>();
+        
+        formularioExtensibleArbol = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
+        formularioExtensibleArbol.setnombreContenedor("Factoria Arbol con Lista");
+        
         listaObs.nuevoActionListener(formularioExtensibleArbol);
         listaObs.nuevoChangeListener(formularioExtensibleArbol);
 
         formularioExtensibleArbol.setListaObservadores(listaObs);
 
-        //        agregarFormSimples();
+              agregarFormularios();
         // agregarFormPorFichas();
-        agregarFormPorFichas2();
+        //agregarFormPorFichas();
+        
+        
         try {
-            formularioExtensibleArbol.addListaHijosExtensibles(listaHijos, "Lista Hijos");
+            formularioExtensibleArbol.addListaHijosExtensibles(listaHijos, "Arbol Principal");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
         }
@@ -92,6 +102,10 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
 
     private static void incializar() {
         formularioExtensibleArbol = null;
+        formularioExtensibleArbol2 = null;
+        formularioExtensibleSimple = null;
+        formularioExtensibleSimple2 = null;
+        formularioExtensibleFichas = null;
         formularioSimpleD0 = null;
         formularioSimpleD1 = null;
         formularioSimpleD2 = null;
@@ -100,31 +114,6 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
         formularioSimpleD5 = null;
         listaObs = null;;
         listaHijos = null;
-    }
-
-    private static void agregarFormSimples() {
-
-        formularioSimpleD0 = new FormSimpleDis0();
-        formularioSimpleD0.setnombreContenedor("hijo 1");
-        formularioSimpleD0.setListaObservadores(listaObs);
-
-        formularioSimpleD1 = new FormSimpleDis1();
-        formularioSimpleD1.setnombreContenedor("hijo 2");
-        formularioSimpleD1.setListaObservadores(listaObs);
-
-        formularioSimpleD2 = new FormSimpleDis2();
-        formularioSimpleD2.setnombreContenedor("hijo 3");
-        formularioSimpleD2.setListaObservadores(listaObs);
-
-        formularioSimpleD3 = new FormSimpleDis3();
-        formularioSimpleD3.setnombreContenedor("hijo 4");
-        formularioSimpleD3.setListaObservadores(listaObs);
-
-        listaHijos.add(formularioSimpleD0);
-        listaHijos.add(formularioSimpleD1);
-        listaHijos.add(formularioSimpleD2);
-        listaHijos.add(formularioSimpleD3);
-
     }
 
     private static void agregarFormPorFichas() {
@@ -244,6 +233,127 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
 
     }
 
+    
+     private static void agregarFormularios() {
+         // CREAR FOMULARIO 1
+        formularioExtensibleSimple = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+
+        formularioExtensibleSimple.setnombreContenedor("Formulario Simple 1");
+
+        listaObs.nuevoActionListener(formularioExtensibleSimple);
+        listaObs.nuevoChangeListener(formularioExtensibleSimple);
+        formularioExtensibleSimple.setListaObservadores(listaObs);
+
+        formularioSimpleD0 = new FormSimpleDis0();
+        formularioSimpleD0.setListaObservadores(listaObs);
+
+        formularioSimpleD1 = new FormSimpleDis1();
+        formularioSimpleD1.setListaObservadores(listaObs);
+
+        try {
+            formularioExtensibleSimple.addHijoExtensible(formularioSimpleD0, "Formulario 1");
+            formularioExtensibleSimple.addHijoExtensible(formularioSimpleD1, "Formulario 2");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensibleSimple, e.getMessage());
+        }
+
+        // CREAR FORMULARIO 2
+        formularioExtensibleFichas = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.PORFICHAS);
+
+        formularioExtensibleFichas.setnombreContenedor("Formulario por Fichas");
+
+        listaObs.nuevoActionListener(formularioExtensibleFichas);
+        listaObs.nuevoChangeListener(formularioExtensibleFichas);
+        formularioExtensibleFichas.setListaObservadores(listaObs);
+
+        formularioSimpleD2 = new FormSimpleDis2();
+        formularioSimpleD2.setListaObservadores(listaObs);
+
+        formularioSimpleD3 = new FormSimpleDis3();
+        formularioSimpleD3.setListaObservadores(listaObs);
+
+        try {
+            formularioExtensibleFichas.addHijoExtensible(formularioSimpleD2, "Formulario 3");
+            formularioExtensibleFichas.addHijoExtensible(formularioSimpleD3, "Formulario 4");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensibleFichas, e.getMessage());
+        }
+
+        
+        // CREAR FOMULARIO ARBOL 2
+        formularioExtensibleArbol2 = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
+
+        formularioExtensibleArbol2.setnombreContenedor("ARBOL 2");
+
+        listaObs.nuevoActionListener(formularioExtensibleArbol2);
+        listaObs.nuevoChangeListener(formularioExtensibleArbol2);
+        formularioExtensibleArbol2.setListaObservadores(listaObs);
+        
+        // CREAR FOMULARIO 3
+        formularioExtensibleSimple2 = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+
+        formularioExtensibleSimple2.setnombreContenedor("Formulario Simple 2");
+
+        listaObs.nuevoActionListener(formularioExtensibleSimple2);
+        listaObs.nuevoChangeListener(formularioExtensibleSimple2);
+        formularioExtensibleSimple2.setListaObservadores(listaObs);
+
+        formularioSimpleD4 = new FormSimpleDis4();
+        formularioSimpleD4.setListaObservadores(listaObs);
+
+        
+        try {
+            formularioExtensibleSimple2.addHijoExtensible(formularioSimpleD4, "Formulario 5");
+         
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensibleSimple2, e.getMessage());
+        }
+
+        
+
+        try {
+            formularioExtensibleArbol2.addHijoExtensible(formularioExtensibleSimple2, formularioExtensibleSimple2.getnombreContenedor());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensibleArbol2, e.getMessage());
+        }
+        
+        
+         // CREAR FOMULARIO 3
+        formularioExtensibleSimple2 = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+
+        formularioExtensibleSimple2.setnombreContenedor("Formulario Simple 2");
+
+        listaObs.nuevoActionListener(formularioExtensibleSimple2);
+        listaObs.nuevoChangeListener(formularioExtensibleSimple2);
+        formularioExtensibleSimple2.setListaObservadores(listaObs);
+
+        
+        formularioSimpleD5 = new FormSimpleDis5();
+        formularioSimpleD5.setListaObservadores(listaObs);
+
+        try {
+            formularioExtensibleSimple2.addHijoExtensible(formularioSimpleD5, "Formulario 6");        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensibleSimple2, e.getMessage());
+        }
+
+        
+        try {
+            formularioExtensibleArbol2.addHijoExtensible(formularioExtensibleSimple2, formularioExtensibleSimple2.getnombreContenedor());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(formularioExtensibleArbol2, e.getMessage());
+        }
+        
+         // AGREGAR HIJOS A lista de hijos del FOMULARIO PRINCIPAL
+         
+          listaHijos.add(formularioExtensibleFichas);
+          listaHijos.add(formularioExtensibleArbol2);
+          listaHijos.add(formularioExtensibleSimple);
+        
+         
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
