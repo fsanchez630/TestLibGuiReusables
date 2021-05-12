@@ -95,7 +95,7 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
             JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
         }
 
-        formularioExtensibleArbol.configurarFormulario();
+        formularioExtensibleArbol.configurarFormulario(true);
         formularioExtensibleArbol.setVisible(true);
 
     }

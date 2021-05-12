@@ -88,7 +88,7 @@ public class CrearFactoriaSimpleLista extends FormularioSimple implements Action
            JOptionPane.showMessageDialog(formularioExtensible,e.getMessage());                    
         }
         
-        formularioExtensible.configurarFormulario();
+        formularioExtensible.configurarFormulario(true);
         formularioExtensible.setVisible(true);
 
     }

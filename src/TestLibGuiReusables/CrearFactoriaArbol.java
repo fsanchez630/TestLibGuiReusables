@@ -200,7 +200,7 @@ public class CrearFactoriaArbol extends FormularioArbol implements ActionListene
             JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
         }
 
-        formularioExtensibleArbol.configurarFormulario();
+        formularioExtensibleArbol.configurarFormulario(true);
         formularioExtensibleArbol.setVisible(true);
 
     }

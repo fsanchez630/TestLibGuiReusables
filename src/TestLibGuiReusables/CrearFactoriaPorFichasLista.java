@@ -92,7 +92,7 @@ public class CrearFactoriaPorFichasLista extends FormularioPorFichas implements 
             JOptionPane.showMessageDialog(formularioExtensible, e.getMessage());
         }
 
-        formularioExtensible.configurarFormulario();
+        formularioExtensible.configurarFormulario(true);
         formularioExtensible.setVisible(true);
 
     }
