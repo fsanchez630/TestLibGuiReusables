@@ -166,15 +166,6 @@ public class CrearFactoriaPorFichas extends FormularioPorFichas implements Actio
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    @Override
-    public void actionPerformed(ActionEvent evt) {
-        System.out.println("Botón pulsado: " + evt.getActionCommand());
-        if (evt.getActionCommand().equals("Aceptar")) {
-            aceptar();
-        } else if (evt.getActionCommand().equals("Cancelar")) {
-            cancelar();
-        }
-    }
 
     @Override
     public void stateChanged(ChangeEvent evt) {

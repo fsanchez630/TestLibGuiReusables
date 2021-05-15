@@ -44,6 +44,15 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
      *
      * @return
      */
+    
+     public FormularioExtensible CrearFactoriaArbolLista() {
+        initComponents();
+
+        FormularioExtensible retorno;
+        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
+        return retorno;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +85,7 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
         listaObs = new ListaObservadoresEventos();
         listaHijos = new ArrayList<FormularioExtensible>();
         
-        formularioExtensibleArbol = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
+        formularioExtensibleArbol = new CrearFactoriaArbolLista();
         formularioExtensibleArbol.setnombreContenedor("Factoria Arbol con Lista");
         
         listaObs.nuevoActionListener(formularioExtensibleArbol);
@@ -357,16 +366,7 @@ public class CrearFactoriaArbolLista extends FormularioArbol implements ActionLi
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    @Override
-    public void actionPerformed(ActionEvent evt) {
-        System.out.println("Botón pulsado: " + evt.getActionCommand());
-        if (evt.getActionCommand().equals("Aceptar")) {
-            aceptar();
-        } else if (evt.getActionCommand().equals("Cancelar")) {
-            cancelar();
-        }
-    }
-
+    
     @Override
     public void stateChanged(ChangeEvent evt) {
         JSpinner s = (JSpinner) evt.getSource();

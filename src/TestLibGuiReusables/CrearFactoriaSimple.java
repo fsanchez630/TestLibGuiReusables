@@ -35,6 +35,15 @@ public class CrearFactoriaSimple extends FormularioSimple implements ActionListe
     private static FormSimpleDis5 formularioSimpleD5;
     private static ListaObservadoresEventos listaObs;
 
+    
+    public FormularioExtensible CrearFactoriaSimple() {
+        initComponents();
+   
+        FormularioExtensible retorno;
+        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+        return retorno;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,7 +72,7 @@ public class CrearFactoriaSimple extends FormularioSimple implements ActionListe
     public static void crearGUI() {
 
         // CREAR FORMULARIO PRINCIPAL
-        formularioExtensibleSimple = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+        formularioExtensibleSimple = new CrearFactoriaSimple();
 
         formularioExtensibleSimple.setnombreContenedor("Factoria SIMPLE");
 
@@ -186,15 +195,6 @@ public class CrearFactoriaSimple extends FormularioSimple implements ActionListe
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent evt) {
-        System.out.println("Botón pulsado: " + evt.getActionCommand());
-        if (evt.getActionCommand().equals("Aceptar")) {
-            aceptar();
-        } else if (evt.getActionCommand().equals("Cancelar")) {
-            cancelar();
-        }
-    }
 
     @Override
     public void stateChanged(ChangeEvent evt) {

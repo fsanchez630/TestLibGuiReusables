@@ -102,16 +102,7 @@ public class CrearFactoriaPorFichasLista extends FormularioPorFichas implements 
     // End of variables declaration//GEN-END:variables
    
 
-    @Override
-    public void actionPerformed(ActionEvent evt) {
-        System.out.println("Botón pulsado: " + evt.getActionCommand());
-        if (evt.getActionCommand().equals("Aceptar")) {
-            aceptar();
-        } else if (evt.getActionCommand().equals("Cancelar")) {
-            cancelar();
-        }
-    }
-
+    
     @Override
     public void stateChanged(ChangeEvent evt) {
         JSpinner s = (JSpinner) evt.getSource();
