@@ -14,12 +14,12 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class Experimento extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener,Validable, Comunicable {
+public class Responsable extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener,Validable, Comunicable {
 
     /**
      * Creates new form Experimento
      */
-    public Experimento() {
+    public Responsable() {
         initComponents();
     }
 
