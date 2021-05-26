@@ -5,8 +5,6 @@ package TestLibGuiReusables;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 /**
  *
  * @author Javi
@@ -34,7 +32,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonSalir = new javax.swing.JButton();
-        botonCrearFactoriaSimple = new javax.swing.JButton();
+        botonCrearPruebaAmpliada = new javax.swing.JButton();
+        botonCrearPruebaBasica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,10 +46,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        botonCrearFactoriaSimple.setText("Crear Prueba Basica");
-        botonCrearFactoriaSimple.addActionListener(new java.awt.event.ActionListener() {
+        botonCrearPruebaAmpliada.setText("Crear Prueba Ampliada");
+        botonCrearPruebaAmpliada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCrearFactoriaSimpleActionPerformed(evt);
+                botonCrearPruebaAmpliadaActionPerformed(evt);
+            }
+        });
+
+        botonCrearPruebaBasica.setText("Crear Prueba Basica");
+        botonCrearPruebaBasica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearPruebaBasicaActionPerformed(evt);
             }
         });
 
@@ -60,21 +66,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(botonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCrearFactoriaSimple, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 66, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonCrearPruebaAmpliada, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(61, 61, 61)
+                    .addComponent(botonCrearPruebaBasica, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addGap(56, 56, 56)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(botonCrearFactoriaSimple)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
+                .addGap(97, 97, 97)
+                .addComponent(botonCrearPruebaAmpliada)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(35, 35, 35))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(56, 56, 56)
+                    .addComponent(botonCrearPruebaBasica)
+                    .addContainerGap(318, Short.MAX_VALUE)))
         );
 
         pack();
@@ -85,10 +104,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    private void botonCrearFactoriaSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearFactoriaSimpleActionPerformed
+    private void botonCrearPruebaAmpliadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPruebaAmpliadaActionPerformed
+        desactivarBotones();
+        CrearPruebaAmpliada.crearGUI();
+    }//GEN-LAST:event_botonCrearPruebaAmpliadaActionPerformed
+
+    private void botonCrearPruebaBasicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPruebaBasicaActionPerformed
         desactivarBotones();
         CrearPruebaBasica.crearGUI();
-    }//GEN-LAST:event_botonCrearFactoriaSimpleActionPerformed
+    }//GEN-LAST:event_botonCrearPruebaBasicaActionPerformed
 
     private void desactivarBotones() {
         /*
@@ -138,7 +162,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonCrearFactoriaSimple;
+    private javax.swing.JButton botonCrearPruebaAmpliada;
+    private javax.swing.JButton botonCrearPruebaBasica;
     private javax.swing.JButton botonSalir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

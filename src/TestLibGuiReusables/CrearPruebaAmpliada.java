@@ -16,20 +16,20 @@ import javax.swing.event.ChangeListener;
  *
  * @author Javi
  */
-public class CrearPruebaBasica extends FormularioSimple implements ActionListener, ChangeListener {
+public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionListener, ChangeListener {
 
     private static FormularioExtensible formularioExtensibleSimple;
 
     private static Prueba formularioSimpleD0;
-    private static PruebaBasica formularioSimpleD1;
+    private static PruebaAmpliada formularioSimpleD1;
 
     private static ListaObservadoresEventos listaObs;
 
-    public FormularioExtensible CrearPruebaBasica() {
+    public FormularioExtensible CrearPruebaAmpliada() {
         initComponents();
 
         FormularioExtensible retorno;
-        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.SIMPLE);
+        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.PORFICHAS);
         return retorno;
     }
 
@@ -62,9 +62,9 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
-        formularioExtensibleSimple = new CrearPruebaBasica();
+        formularioExtensibleSimple = new CrearPruebaAmpliada();
 
-        formularioExtensibleSimple.setnombreContenedor("Prueba Basica");
+        formularioExtensibleSimple.setnombreContenedor("Prueba Ampliada");
         // crear lista observadores de eventos e incluir el formulario
         listaObs = new ListaObservadoresEventos();
         listaObs.nuevoActionListener(formularioExtensibleSimple);
@@ -76,13 +76,13 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
         formularioSimpleD0.setListaObservadores(listaObs);
        // formularioSimpleD0.configurarFormulario(false);
 
-        formularioSimpleD1 = new PruebaBasica();
+        formularioSimpleD1 = new PruebaAmpliada();
         formularioSimpleD1.setListaObservadores(listaObs);
      //   formularioSimpleD1.configurarFormulario(false);
 
         try {
-            formularioExtensibleSimple.addHijoExtensible(formularioSimpleD0, formularioSimpleD0.getnombreContenedor());
-            formularioExtensibleSimple.addHijoExtensible(formularioSimpleD1, formularioSimpleD1.getnombreContenedor());
+            formularioExtensibleSimple.addHijoExtensible(formularioSimpleD0, "Datos Basicos");
+            formularioExtensibleSimple.addHijoExtensible(formularioSimpleD1, "Datos Ampliados");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensibleSimple, e.getMessage());
         }
