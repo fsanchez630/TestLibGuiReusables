@@ -11,27 +11,28 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import javax.swing.event.ChangeListener;
+import javax.swing.event.TreeSelectionListener;
 
 /**
  *
  * @author Javi
  */
-public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionListener, ChangeListener {
+public class CrearLaboratorio extends FormularioArbol implements ActionListener, ChangeListener, TreeSelectionListener {
 
-    private static FormularioExtensible formularioExtensiblePorFichas;
+    private static FormularioExtensible formularioExtensibleArbol;
 
-    private static Prueba formularioSimpleD0;
-    private static PruebaAmpliada formularioSimpleD1;
+    private static Laboratorio formularioSimpleD0;
+    private static Responsable formularioSimpleD1;
     
-   // private static FormularioExtensible formularioPruebaBasica ;
+     private static FormularioExtensible formularioPruebaBasica ;
 
     private static ListaObservadoresEventos listaObs;
 
-    public FormularioExtensible CrearPruebaAmpliada() {
+    public FormularioExtensible CrearLaboratorio() {
         initComponents();
 
         FormularioExtensible retorno;
-        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.PORFICHAS);
+        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.ARBOL);
         return retorno;
     }
 
@@ -64,36 +65,37 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
-        formularioExtensiblePorFichas = new CrearPruebaAmpliada();
+        formularioExtensibleArbol = new CrearLaboratorio();
 
-        formularioExtensiblePorFichas.setnombreContenedor("Prueba Ampliada");
+        formularioExtensibleArbol.setnombreContenedor("Laboratorio");
         // crear lista observadores de eventos e incluir el formulario
         listaObs = new ListaObservadoresEventos();
-        listaObs.nuevoActionListener(formularioExtensiblePorFichas);
-        listaObs.nuevoChangeListener(formularioExtensiblePorFichas);
+        listaObs.nuevoActionListener(formularioExtensibleArbol);
+        listaObs.nuevoChangeListener(formularioExtensibleArbol);
 
-        formularioExtensiblePorFichas.setListaObservadores(listaObs);
+        formularioExtensibleArbol.setListaObservadores(listaObs);
 
-        formularioSimpleD0 = new Prueba();
+        formularioSimpleD0 = new Laboratorio();
         formularioSimpleD0.setListaObservadores(listaObs);
-        // formularioSimpleD0.configurarFormulario(false);
+        formularioSimpleD0.configurarFormulario(false);
 
-        formularioSimpleD1 = new PruebaAmpliada();
+        formularioSimpleD1 = new Responsable();
         formularioSimpleD1.setListaObservadores(listaObs);
-        //   formularioSimpleD1.configurarFormulario(false);
+        formularioSimpleD1.configurarFormulario(false);
         
-        //formularioPruebaBasica = CrearPruebaBasica.crearGUI();
+        formularioPruebaBasica = CrearPruebaBasica.crearGUI();
 
         try {
-            formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD0, "Datos Basicos");
-            formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD1, "Datos Ampliados");
-         //   formularioExtensiblePorFichas.addHijoExtensible(formularioPruebaBasica, "Prueba Basica");
+            formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Laboratorio");
+            formularioExtensibleArbol.addHijoExtensible(formularioSimpleD1, "Responsable");
+            formularioExtensibleArbol.addHijoExtensible(formularioPruebaBasica, "Prueba Basica");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(formularioExtensiblePorFichas, e.getMessage());
+            JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
         }
-        return (formularioExtensiblePorFichas);
-        //formularioExtensiblePorFichas.configurarFormulario(true);
-        //formularioExtensiblePorFichas.setVisible(true);
+
+        return (formularioExtensibleArbol);
+        //formularioExtensibleArbol.configurarFormulario(true);
+        //formularioExtensibleArbol.setVisible(true);
 
     }
 
@@ -102,7 +104,7 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
     // End of variables declaration//GEN-END:variables
     private static void incializar() {
 
-        formularioExtensiblePorFichas = null;
+        formularioExtensibleArbol = null;
 
         formularioSimpleD0 = null;
         formularioSimpleD1 = null;

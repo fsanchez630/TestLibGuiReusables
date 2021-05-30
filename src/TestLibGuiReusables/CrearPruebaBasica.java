@@ -58,7 +58,7 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void crearGUI() {
+    public static FormularioExtensible crearGUI() {
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
@@ -87,8 +87,9 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
             JOptionPane.showMessageDialog(formularioExtensibleSimple, e.getMessage());
         }
 
-        formularioExtensibleSimple.configurarFormulario(true);
-        formularioExtensibleSimple.setVisible(true);
+        return(formularioExtensibleSimple);
+        //formularioExtensibleSimple.configurarFormulario(true);
+        //formularioExtensibleSimple.setVisible(true);
 
     }
 

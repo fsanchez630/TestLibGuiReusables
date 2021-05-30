@@ -48,27 +48,27 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
         setTitle("PruebaAmpliada");
         setSize(new java.awt.Dimension(480, 450));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pequeña", "mediana", "grande" }));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Tamaño muestra");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder("Observaciones"));
         jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Color");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Energia");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Rojo", "Amarillo", "Verde", "Azul" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(jList1);
 
-        jLabel4.setText("jLabel2");
+        jLabel4.setText("Potencia");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,7 +81,7 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -121,6 +121,27 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
 
+
+     @Override
+    public Boolean validarCampos() {
+        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+        return (Boolean.TRUE);
+    }
+
+    @Override
+    public void guardar() {
+        System.out.println("guardar " + this.getClass() + " " + this.getName());
+
+       
+
+    }
+
+    @Override
+    public void limpiar() {
+        System.out.println("limpiar " + this.getClass() + " " + this.getName());
+
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
