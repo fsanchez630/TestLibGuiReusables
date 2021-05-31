@@ -17,17 +17,19 @@ import javax.swing.event.TreeSelectionListener;
  *
  * @author Javi
  */
-public class CrearLaboratorio extends FormularioArbol implements ActionListener, ChangeListener, TreeSelectionListener {
+public class CrearExperimento extends FormularioArbol implements ActionListener, ChangeListener, TreeSelectionListener {
 
     private static FormularioExtensible formularioExtensibleArbol;
 
-    private static Laboratorio formularioSimpleD0;
-    private static Responsable formularioSimpleD1;
+    private static Experimento formularioSimpleD0;
 
-//    private static FormularioExtensible formularioPruebaBasica;
+    private static FormularioExtensible formularioPruebaBasica;
+    private static FormularioExtensible formularioPruebaAmpliada;
+    private static FormularioExtensible formularioLaboratorio;
+
     private static ListaObservadoresEventos listaObs;
 
-    public FormularioExtensible CrearLaboratorio() {
+    public FormularioExtensible CrearExperimento() {
         initComponents();
 
         FormularioExtensible retorno;
@@ -64,9 +66,9 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
-        formularioExtensibleArbol = new CrearLaboratorio();
+        formularioExtensibleArbol = new CrearExperimento();
 
-        formularioExtensibleArbol.setnombreContenedor("Laboratorio");
+        formularioExtensibleArbol.setnombreContenedor("Experimento");
         // crear lista observadores de eventos e incluir el formulario
         listaObs = new ListaObservadoresEventos();
         listaObs.nuevoActionListener(formularioExtensibleArbol);
@@ -74,19 +76,23 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
 
         formularioExtensibleArbol.setListaObservadores(listaObs);
 
-        formularioSimpleD0 = new Laboratorio();
+        formularioSimpleD0 = new Experimento();
         formularioSimpleD0.setListaObservadores(listaObs);
 
-        formularioSimpleD1 = new Responsable();
-        formularioSimpleD1.setListaObservadores(listaObs);
+        formularioPruebaBasica = CrearPruebaBasica.crearGUI();
+        formularioPruebaBasica.configurarFormulario(false);
 
-//        formularioPruebaBasica = CrearPruebaBasica.crearGUI();      
-//        formularioPruebaBasica.configurarFormulario(false);
+        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI();
+        formularioPruebaAmpliada.configurarFormulario(false);
+
+        formularioLaboratorio = CrearLaboratorio.crearGUI();
+        formularioLaboratorio.configurarFormulario(false);
 
         try {
-            formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Laboratorio");
-            formularioExtensibleArbol.addHijoExtensible(formularioSimpleD1, "Responsable");
-        //    formularioExtensibleArbol.addHijoExtensible(formularioPruebaBasica, "Prueba Basica");
+            formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Experimento");
+            formularioExtensibleArbol.addHijoExtensible(formularioPruebaBasica, "Prueba Basica");
+            formularioExtensibleArbol.addHijoExtensible(formularioPruebaAmpliada, "Prueba Ampliada");
+            formularioExtensibleArbol.addHijoExtensible(formularioLaboratorio, "Laboratorio");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
         }
@@ -105,7 +111,7 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
         formularioExtensibleArbol = null;
 
         formularioSimpleD0 = null;
-        formularioSimpleD1 = null;
+   
 
         listaObs = null;
 

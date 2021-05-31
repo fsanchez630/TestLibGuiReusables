@@ -43,7 +43,7 @@ public class Responsable extends LibGuiReusables.FormularioSimple implements Act
         jCheckBox2 = new javax.swing.JCheckBox();
 
         setTitle("Experimento");
-        setSize(new java.awt.Dimension(420, 150));
+        setSize(new java.awt.Dimension(450, 150));
 
         jLabelNombre.setText("Nombre");
 

@@ -19,11 +19,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private static MenuPrincipal menuPrincipal;
 
     private static FormularioExtensible formularioPruebaBasica;
-    
+
     private static FormularioExtensible formularioPruebaAmpliada;
+
+    private static FormularioExtensible formularioLaboratorio;
     
-     private static FormularioExtensible formularioLaboratorio
-             ;
+    private static FormularioExtensible formularioExperimento;
 
     public MenuPrincipal() {
         initComponents();
@@ -44,6 +45,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonCrearPruebaAmpliada = new javax.swing.JButton();
         botonCrearPruebaBasica = new javax.swing.JButton();
         botonCrearLaboratorio = new javax.swing.JButton();
+        botonCrearExperimento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,10 +73,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         botonCrearLaboratorio.setText("Crear Laboratorio");
-        botonCrearLaboratorio.setActionCommand("Crear Laboratorio");
         botonCrearLaboratorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCrearLaboratorioActionPerformed(evt);
+            }
+        });
+
+        botonCrearExperimento.setText("Crear Experimento");
+        botonCrearExperimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearExperimentoActionPerformed(evt);
             }
         });
 
@@ -89,7 +97,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(botonCrearLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(botonCrearPruebaAmpliada, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .addComponent(botonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCrearExperimento, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -102,7 +111,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(botonCrearPruebaAmpliada)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCrearLaboratorio)
-                .addGap(100, 100, 100)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonCrearExperimento)
+                .addGap(68, 68, 68)
                 .addComponent(botonSalir)
                 .addGap(10, 10, 10))
         );
@@ -120,7 +131,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI();
         formularioPruebaAmpliada.configurarFormulario(true);
         formularioPruebaAmpliada.setVisible(true);
-        
+
     }//GEN-LAST:event_botonCrearPruebaAmpliadaActionPerformed
 
     private void botonCrearPruebaBasicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPruebaBasicaActionPerformed
@@ -136,6 +147,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         formularioLaboratorio.configurarFormulario(true);
         formularioLaboratorio.setVisible(true);
     }//GEN-LAST:event_botonCrearLaboratorioActionPerformed
+
+    private void botonCrearExperimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearExperimentoActionPerformed
+         desactivarBotones();
+        formularioExperimento = CrearExperimento.crearGUI();
+        formularioExperimento.configurarFormulario(true);
+        formularioExperimento.setVisible(true);
+    }//GEN-LAST:event_botonCrearExperimentoActionPerformed
 
     private void desactivarBotones() {
         /*
@@ -185,6 +203,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonCrearExperimento;
     private javax.swing.JButton botonCrearLaboratorio;
     private javax.swing.JButton botonCrearPruebaAmpliada;
     private javax.swing.JButton botonCrearPruebaBasica;

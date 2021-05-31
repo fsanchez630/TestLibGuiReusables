@@ -45,7 +45,9 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
         jSpinner2 = new javax.swing.JSpinner();
 
         setTitle("Laboratorio");
-        setSize(new java.awt.Dimension(440, 200));
+        setSize(new java.awt.Dimension(420, 250));
+
+        jPanel1.setRequestFocusEnabled(false);
 
         jLabelNombre.setText("Nombre");
 

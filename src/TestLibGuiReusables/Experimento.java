@@ -33,18 +33,47 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Act
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabelNombre = new javax.swing.JLabel();
+        jTextNombre = new javax.swing.JTextField();
+        jLabelNombre1 = new javax.swing.JLabel();
+        jTextNombre1 = new javax.swing.JTextField();
 
         setTitle("Experimento");
+        setSize(new java.awt.Dimension(400, 300));
+
+        jLabelNombre.setText("Nombre");
+
+        jLabelNombre1.setText("Descripcion");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelNombre1)
+                        .addGap(29, 29, 29)
+                        .addComponent(jTextNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelNombre)
+                        .addGap(49, 49, 49)
+                        .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombre1)
+                    .addComponent(jTextNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -73,6 +102,10 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Act
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelNombre1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextNombre;
+    private javax.swing.JTextField jTextNombre1;
     // End of variables declaration//GEN-END:variables
 }
