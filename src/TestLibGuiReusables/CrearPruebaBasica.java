@@ -58,7 +58,7 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static FormularioExtensible crearGUI() {
+    public static FormularioExtensible crearGUI(ListaObservadoresEventos lisObserv) {
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
@@ -66,19 +66,23 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
 
         formularioExtensibleSimple.setnombreContenedor("Prueba Basica");
         // crear lista observadores de eventos e incluir el formulario
-        listaObs = new ListaObservadoresEventos();
-        listaObs.nuevoActionListener(formularioExtensibleSimple);
-        listaObs.nuevoChangeListener(formularioExtensibleSimple);
+        if (lisObserv != null) {
+            listaObs = lisObserv;
+        } else {
+            listaObs = new ListaObservadoresEventos();
+            listaObs.nuevoActionListener(formularioExtensibleSimple);
+            listaObs.nuevoChangeListener(formularioExtensibleSimple);
+        }
 
         formularioExtensibleSimple.setListaObservadores(listaObs);
 
         formularioSimpleD0 = new Prueba();
         formularioSimpleD0.setListaObservadores(listaObs);
-       // formularioSimpleD0.configurarFormulario(false);
+        // formularioSimpleD0.configurarFormulario(false);
 
         formularioSimpleD1 = new PruebaBasica();
         formularioSimpleD1.setListaObservadores(listaObs);
-     //   formularioSimpleD1.configurarFormulario(false);
+        //   formularioSimpleD1.configurarFormulario(false);
 
         try {
             formularioExtensibleSimple.addHijoExtensible(formularioSimpleD0, formularioSimpleD0.getnombreContenedor());
@@ -87,7 +91,7 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
             JOptionPane.showMessageDialog(formularioExtensibleSimple, e.getMessage());
         }
 
-        return(formularioExtensibleSimple);
+        return (formularioExtensibleSimple);
         //formularioExtensibleSimple.configurarFormulario(true);
         //formularioExtensibleSimple.setVisible(true);
 

@@ -23,7 +23,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private static FormularioExtensible formularioPruebaAmpliada;
 
     private static FormularioExtensible formularioLaboratorio;
-    
+
     private static FormularioExtensible formularioExperimento;
 
     public MenuPrincipal() {
@@ -128,7 +128,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botonCrearPruebaAmpliadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPruebaAmpliadaActionPerformed
         desactivarBotones();
-        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI();
+        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI(null);
         formularioPruebaAmpliada.configurarFormulario(true);
         formularioPruebaAmpliada.setVisible(true);
 
@@ -136,23 +136,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botonCrearPruebaBasicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPruebaBasicaActionPerformed
         desactivarBotones();
-        formularioPruebaBasica = CrearPruebaBasica.crearGUI();
+        formularioPruebaBasica = CrearPruebaBasica.crearGUI(null);
         formularioPruebaBasica.configurarFormulario(true);
         formularioPruebaBasica.setVisible(true);
     }//GEN-LAST:event_botonCrearPruebaBasicaActionPerformed
 
     private void botonCrearLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearLaboratorioActionPerformed
         desactivarBotones();
-        formularioLaboratorio = CrearLaboratorio.crearGUI();
+        formularioLaboratorio = CrearLaboratorio.crearGUI(null);
         formularioLaboratorio.configurarFormulario(true);
         formularioLaboratorio.setVisible(true);
     }//GEN-LAST:event_botonCrearLaboratorioActionPerformed
 
     private void botonCrearExperimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearExperimentoActionPerformed
-         desactivarBotones();
-        formularioExperimento = CrearExperimento.crearGUI();
+        desactivarBotones();
+
+        formularioExperimento = CrearExperimento.crearGUI(null);
         formularioExperimento.configurarFormulario(true);
         formularioExperimento.setVisible(true);
+ 
     }//GEN-LAST:event_botonCrearExperimentoActionPerformed
 
     private void desactivarBotones() {

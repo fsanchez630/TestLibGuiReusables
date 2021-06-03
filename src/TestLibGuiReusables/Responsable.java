@@ -8,6 +8,7 @@ package TestLibGuiReusables;
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.Validable;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 
 /**
@@ -43,7 +44,7 @@ public class Responsable extends LibGuiReusables.FormularioSimple implements Act
         jCheckBox2 = new javax.swing.JCheckBox();
 
         setTitle("Experimento");
-        setSize(new java.awt.Dimension(450, 150));
+        setSize(new java.awt.Dimension(500, 150));
 
         jLabelNombre.setText("Nombre");
 
@@ -111,6 +112,17 @@ public class Responsable extends LibGuiReusables.FormularioSimple implements Act
      @Override
     public Boolean validarCampos() {
         System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+        
+        
+        if (jTextNombre.getText().isEmpty()) {
+            jTextNombre.requestFocus();
+            JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+        
+        
+
+        
         return (Boolean.TRUE);
     }
 

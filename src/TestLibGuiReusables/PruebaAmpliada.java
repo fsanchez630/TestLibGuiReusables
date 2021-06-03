@@ -8,13 +8,14 @@ package TestLibGuiReusables;
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.Validable;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 
 /**
  *
  * @author Javi
  */
-public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener,Validable, Comunicable {
+public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener, Validable, Comunicable {
 
     /**
      * Creates new form Experimento
@@ -121,10 +122,21 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
 
-
-     @Override
+    @Override
     public Boolean validarCampos() {
         System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+
+        if (jList1.isSelectionEmpty()) {
+            jList1.requestFocus();
+            JOptionPane.showMessageDialog(this, "Debe seleccinar un Color");
+            return (Boolean.FALSE);
+        }
+
+        if (jTextArea1.getText().isEmpty()) {
+            jTextArea1.requestFocus();
+            JOptionPane.showMessageDialog(this, "El campo Observaciones no puede estar vacio");
+            return (Boolean.FALSE);
+        }
         return (Boolean.TRUE);
     }
 
@@ -132,15 +144,12 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
     public void guardar() {
         System.out.println("guardar " + this.getClass() + " " + this.getName());
 
-       
-
     }
 
     @Override
     public void limpiar() {
         System.out.println("limpiar " + this.getClass() + " " + this.getName());
 
-       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

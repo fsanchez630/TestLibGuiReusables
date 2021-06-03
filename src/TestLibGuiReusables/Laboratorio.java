@@ -8,13 +8,14 @@ package TestLibGuiReusables;
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.Validable;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 
 /**
  *
  * @author Javi
  */
-public class Laboratorio extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener,Validable, Comunicable {
+public class Laboratorio extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener, Validable, Comunicable {
 
     /**
      * Creates new form Experimento
@@ -42,10 +43,10 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
         jSpinner1 = new javax.swing.JSpinner();
         jLabelNombre3 = new javax.swing.JLabel();
         jLabelNombre4 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        jSlider1Laboratorio = new javax.swing.JSlider();
 
         setTitle("Laboratorio");
-        setSize(new java.awt.Dimension(420, 250));
+        setSize(new java.awt.Dimension(450, 250));
 
         jPanel1.setRequestFocusEnabled(false);
 
@@ -57,7 +58,16 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
 
         jLabelNombre3.setText("Capacidad");
 
-        jLabelNombre4.setText("Ordenadores");
+        jLabelNombre4.setText("Personas en Laboratorio");
+
+        jSlider1Laboratorio.setMaximum(200);
+        jSlider1Laboratorio.setValue(0);
+        jSlider1Laboratorio.setName("jSlider1Laboratorio"); // NOI18N
+        jSlider1Laboratorio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1LaboratorioStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,27 +77,23 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelNombre1)
+                        .addComponent(jLabelNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(29, 29, 29)
                         .addComponent(jTextNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelNombre)
+                        .addComponent(jLabelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(49, 49, 49)
                         .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelNombre4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelNombre2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelNombre3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabelNombre3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelNombre4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jTextNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSlider1Laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,19 +115,38 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNombre3))
-                .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNombre4))
-                .addGap(10, 10, 10))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNombre4)
+                    .addComponent(jSlider1Laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-     @Override
+    private void jSlider1LaboratorioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1LaboratorioStateChanged
+        // TODO add your handling code here:
+        this.getListaObservadores().disparaStateChanged(evt);
+    }//GEN-LAST:event_jSlider1LaboratorioStateChanged
+
+    @Override
     public Boolean validarCampos() {
         System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+        
+         if (jTextNombre.getText().isEmpty()){
+            jTextNombre.requestFocus();
+             JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+        
+        
+         if (jTextNombre1.getText().isEmpty()){
+            jTextNombre1.requestFocus();
+             JOptionPane.showMessageDialog(this, "El campo Descripcion no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+        
         return (Boolean.TRUE);
     }
 
@@ -129,15 +154,12 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
     public void guardar() {
         System.out.println("guardar " + this.getClass() + " " + this.getName());
 
-       
-
     }
 
     @Override
     public void limpiar() {
         System.out.println("limpiar " + this.getClass() + " " + this.getName());
 
-       
     }
 
 
@@ -148,10 +170,22 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
     private javax.swing.JLabel jLabelNombre3;
     private javax.swing.JLabel jLabelNombre4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSlider jSlider1Laboratorio;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextField jTextNombre;
     private javax.swing.JTextField jTextNombre1;
     private javax.swing.JTextField jTextNombre2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void recuperarValorExterno(String nombreComponente, Object valor) {
+
+        if ("jSpinnerExperimento".equals(nombreComponente)) {
+            jSlider1Laboratorio.setValue((Integer) valor);
+        }
+        System.out.println("recuperar valor");
+    }
+
+   
+
 }

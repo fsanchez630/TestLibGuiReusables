@@ -24,7 +24,6 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
     private static Laboratorio formularioSimpleD0;
     private static Responsable formularioSimpleD1;
 
-//    private static FormularioExtensible formularioPruebaBasica;
     private static ListaObservadoresEventos listaObs;
 
     public FormularioExtensible CrearLaboratorio() {
@@ -60,7 +59,7 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static FormularioExtensible crearGUI() {
+    public static FormularioExtensible crearGUI(ListaObservadoresEventos lisObserv) {
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
@@ -68,9 +67,13 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
 
         formularioExtensibleArbol.setnombreContenedor("Laboratorio");
         // crear lista observadores de eventos e incluir el formulario
-        listaObs = new ListaObservadoresEventos();
-        listaObs.nuevoActionListener(formularioExtensibleArbol);
-        listaObs.nuevoChangeListener(formularioExtensibleArbol);
+        if (lisObserv != null) {
+            listaObs = lisObserv;
+        } else {
+            listaObs = new ListaObservadoresEventos();
+            listaObs.nuevoActionListener(formularioExtensibleArbol);
+            listaObs.nuevoChangeListener(formularioExtensibleArbol);
+        }
 
         formularioExtensibleArbol.setListaObservadores(listaObs);
 
@@ -80,13 +83,9 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
         formularioSimpleD1 = new Responsable();
         formularioSimpleD1.setListaObservadores(listaObs);
 
-//        formularioPruebaBasica = CrearPruebaBasica.crearGUI();      
-//        formularioPruebaBasica.configurarFormulario(false);
-
         try {
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Laboratorio");
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD1, "Responsable");
-        //    formularioExtensibleArbol.addHijoExtensible(formularioPruebaBasica, "Prueba Basica");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensibleArbol, e.getMessage());
         }
@@ -109,6 +108,15 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
 
         listaObs = null;
 
+    }
+
+    @Override
+    public void recuperarValorExterno(String nombreComponente, Object valor) {
+
+        if ("jSpinnerExperimento".equals(nombreComponente)) {
+            formularioSimpleD0.recuperarValorExterno(nombreComponente, valor);
+        }
+        System.out.println("recuperar valor");
     }
 
 }

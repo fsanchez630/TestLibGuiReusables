@@ -22,9 +22,8 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
 
     private static Prueba formularioSimpleD0;
     private static PruebaAmpliada formularioSimpleD1;
-    
-   // private static FormularioExtensible formularioPruebaBasica ;
 
+    // private static FormularioExtensible formularioPruebaBasica ;
     private static ListaObservadoresEventos listaObs;
 
     public FormularioExtensible CrearPruebaAmpliada() {
@@ -60,7 +59,7 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static FormularioExtensible crearGUI() {
+    public static FormularioExtensible crearGUI(ListaObservadoresEventos lisObserv) {
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
@@ -68,9 +67,13 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
 
         formularioExtensiblePorFichas.setnombreContenedor("Prueba Ampliada");
         // crear lista observadores de eventos e incluir el formulario
-        listaObs = new ListaObservadoresEventos();
-        listaObs.nuevoActionListener(formularioExtensiblePorFichas);
-        listaObs.nuevoChangeListener(formularioExtensiblePorFichas);
+        if (lisObserv != null) {
+            listaObs = lisObserv;
+        } else {
+            listaObs = new ListaObservadoresEventos();
+            listaObs.nuevoActionListener(formularioExtensiblePorFichas);
+            listaObs.nuevoChangeListener(formularioExtensiblePorFichas);
+        }
 
         formularioExtensiblePorFichas.setListaObservadores(listaObs);
 
@@ -81,13 +84,12 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
         formularioSimpleD1 = new PruebaAmpliada();
         formularioSimpleD1.setListaObservadores(listaObs);
         //   formularioSimpleD1.configurarFormulario(false);
-        
-        //formularioPruebaBasica = CrearPruebaBasica.crearGUI();
 
+        //formularioPruebaBasica = CrearPruebaBasica.crearGUI();
         try {
             formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD0, "Datos Basicos");
             formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD1, "Datos Ampliados");
-         //   formularioExtensiblePorFichas.addHijoExtensible(formularioPruebaBasica, "Prueba Basica");
+            //   formularioExtensiblePorFichas.addHijoExtensible(formularioPruebaBasica, "Prueba Basica");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensiblePorFichas, e.getMessage());
         }

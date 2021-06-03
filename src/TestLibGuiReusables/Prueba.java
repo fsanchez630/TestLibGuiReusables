@@ -8,6 +8,7 @@ package TestLibGuiReusables;
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.Validable;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 
 /**
@@ -124,6 +125,18 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements ActionLi
      @Override
     public Boolean validarCampos() {
         System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+        
+        if (jTextCodigo.getText().isEmpty()){
+            jTextCodigo.requestFocus();
+             JOptionPane.showMessageDialog(this, "El campo Codigo no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+        
+        if (jTextNombre.getText().isEmpty()){
+            jTextNombre.requestFocus();
+             JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
+            return (Boolean.FALSE);
+        }
         return (Boolean.TRUE);
     }
 
