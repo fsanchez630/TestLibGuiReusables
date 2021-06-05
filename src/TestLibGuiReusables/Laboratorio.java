@@ -150,17 +150,9 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
         return (Boolean.TRUE);
     }
 
-    @Override
-    public void guardar() {
-        System.out.println("guardar " + this.getClass() + " " + this.getName());
+   
 
-    }
-
-    @Override
-    public void limpiar() {
-        System.out.println("limpiar " + this.getClass() + " " + this.getName());
-
-    }
+   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

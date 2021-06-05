@@ -129,36 +129,23 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Act
     @Override
     public Boolean validarCampos() {
         System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
-        
-        if (jTextNombre.getText().isEmpty()){
+
+        if (jTextNombre.getText().isEmpty()) {
             jTextNombre.requestFocus();
-             JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
             return (Boolean.FALSE);
         }
-        
-        
-         if (jTextNombre1.getText().isEmpty()){
+
+        if (jTextNombre1.getText().isEmpty()) {
             jTextNombre1.requestFocus();
-             JOptionPane.showMessageDialog(this, "El campo Descripcion no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Descripcion no puede estar vacio");
             return (Boolean.FALSE);
         }
-        
-        
-        
+
         return (Boolean.TRUE);
     }
 
-    @Override
-    public void guardar() {
-        System.out.println("guardar " + this.getClass() + " " + this.getName());
-
-    }
-
-    @Override
-    public void limpiar() {
-        System.out.println("limpiar " + this.getClass() + " " + this.getName());
-
-    }
+   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -183,5 +170,4 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Act
         System.out.println("recuperar valor");
     }
 
-    
 }

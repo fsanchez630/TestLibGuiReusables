@@ -113,4 +113,11 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
 
     }
 
+    @Override
+    public void guardar() {
+        super.guardar();
+        JOptionPane.showMessageDialog(this, "Se ha guardado la Prueba Ampliada");
+
+    }
+
 }

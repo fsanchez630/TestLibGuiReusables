@@ -110,5 +110,14 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
         listaObs = null;
 
     }
+    
+     @Override
+    public void guardar() {
+        super.guardar();
+        JOptionPane.showMessageDialog(this, "Se ha guardado la Prueba Basica");
+
+       
+
+    }
 
 }

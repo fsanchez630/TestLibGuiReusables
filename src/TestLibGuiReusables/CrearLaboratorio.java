@@ -119,4 +119,12 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
         System.out.println("recuperar valor");
     }
 
+    
+     @Override
+    public void guardar() {
+        super.guardar();
+        JOptionPane.showMessageDialog(this, "Se ha guardado el Laboratorio");
+
+    }
+    
 }

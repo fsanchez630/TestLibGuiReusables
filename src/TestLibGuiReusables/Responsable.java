@@ -128,18 +128,13 @@ public class Responsable extends LibGuiReusables.FormularioSimple implements Act
 
     @Override
     public void guardar() {
-        System.out.println("guardar " + this.getClass() + " " + this.getName());
-
+        super.guardar();
+        JOptionPane.showMessageDialog(this, "Se ha guardado el Responsable");
        
 
     }
 
-    @Override
-    public void limpiar() {
-        System.out.println("limpiar " + this.getClass() + " " + this.getName());
-
-       
-    }
+   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

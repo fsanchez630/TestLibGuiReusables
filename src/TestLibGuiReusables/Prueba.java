@@ -140,20 +140,9 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements ActionLi
         return (Boolean.TRUE);
     }
 
-    @Override
-    public void guardar() {
-        System.out.println("guardar " + this.getClass() + " " + this.getName());
+   
 
-       
-
-    }
-
-    @Override
-    public void limpiar() {
-        System.out.println("limpiar " + this.getClass() + " " + this.getName());
-
-       
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelCodigo;

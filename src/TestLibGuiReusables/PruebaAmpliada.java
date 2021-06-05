@@ -140,17 +140,9 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
         return (Boolean.TRUE);
     }
 
-    @Override
-    public void guardar() {
-        System.out.println("guardar " + this.getClass() + " " + this.getName());
+    
 
-    }
-
-    @Override
-    public void limpiar() {
-        System.out.println("limpiar " + this.getClass() + " " + this.getName());
-
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;

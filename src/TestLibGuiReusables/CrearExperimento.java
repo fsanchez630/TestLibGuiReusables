@@ -96,7 +96,7 @@ public class CrearExperimento extends FormularioArbol implements ActionListener,
         formularioPruebaBasica.configurarFormulario(false);
 
         formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI(listaObs);
-       // formularioPruebaAmpliada.setListaObservadores(listaObs);
+        // formularioPruebaAmpliada.setListaObservadores(listaObs);
         formularioPruebaAmpliada.configurarFormulario(false);
 
         formularioLaboratorio = CrearLaboratorio.crearGUI(listaObs);
@@ -151,6 +151,14 @@ public class CrearExperimento extends FormularioArbol implements ActionListener,
                 formularioSimpleD0.recuperarValorExterno("jSlider1Laboratorio", s.getValue());
             }
         }
+
+    }
+
+    @Override
+    public void guardar() {
+
+        super.guardar();
+        JOptionPane.showMessageDialog(this, "Se ha guardado el Experimento");
 
     }
 
