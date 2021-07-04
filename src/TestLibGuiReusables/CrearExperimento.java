@@ -93,15 +93,18 @@ public class CrearExperimento extends FormularioArbol implements ActionListener,
 
         formularioPruebaBasica = CrearPruebaBasica.crearGUI(listaObs);
         //formularioPruebaBasica.setListaObservadores(listaObs);
-        formularioPruebaBasica.configurarFormulario(false);
+        formularioPruebaBasica.setHayBotones(false); // sin botones
+        formularioPruebaBasica.configurarFormulario();
 
         formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI(listaObs);
         // formularioPruebaAmpliada.setListaObservadores(listaObs);
-        formularioPruebaAmpliada.configurarFormulario(false);
+        formularioPruebaAmpliada.setHayBotones(false); // sin botones
+        formularioPruebaAmpliada.configurarFormulario();
 
         formularioLaboratorio = CrearLaboratorio.crearGUI(listaObs);
         //formularioLaboratorio.setListaObservadores(listaObs);
-        formularioLaboratorio.configurarFormulario(false);
+        formularioLaboratorio.setHayBotones(false); // sin botones
+        formularioLaboratorio.configurarFormulario();
 
         try {
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Experimento");
