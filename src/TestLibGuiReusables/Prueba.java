@@ -8,8 +8,8 @@ package TestLibGuiReusables;
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.FormularioExtensible;
 import LibGuiReusables.Validable;
-import LibGuiReusables.revision.EventoCambiarValor;
-import LibGuiReusables.revision.Observador;
+import LibGuiReusables.EventoCambiarValor;
+import LibGuiReusables.Observador;
 import javax.swing.JOptionPane;
 
 /**

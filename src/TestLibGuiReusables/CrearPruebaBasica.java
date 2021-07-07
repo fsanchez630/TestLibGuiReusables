@@ -6,7 +6,7 @@ package TestLibGuiReusables;
  * and open the template in the editor.
  */
 import LibGuiReusables.*;
-import LibGuiReusables.revision.Observador;
+import LibGuiReusables.Observador;
 
 import javax.swing.JOptionPane;
 

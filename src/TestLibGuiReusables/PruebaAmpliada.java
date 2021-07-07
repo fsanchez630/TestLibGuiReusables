@@ -7,8 +7,8 @@ package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.Validable;
-import LibGuiReusables.revision.EventoCambiarValor;
-import LibGuiReusables.revision.Observador;
+import LibGuiReusables.EventoCambiarValor;
+import LibGuiReusables.Observador;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;

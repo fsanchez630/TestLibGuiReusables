@@ -7,7 +7,7 @@ package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.Validable;
-import LibGuiReusables.revision.Observador;
+import LibGuiReusables.Observador;
 
 /**
  *
