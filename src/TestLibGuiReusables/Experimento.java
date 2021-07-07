@@ -6,16 +6,18 @@
 package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
+import LibGuiReusables.FormularioExtensible;
 import LibGuiReusables.Validable;
-import java.awt.event.ActionListener;
+import LibGuiReusables.revision.EventoCambiarValor;
+import LibGuiReusables.revision.Observador;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeListener;
+import javax.swing.JSlider;
 
 /**
  *
  * @author Javi
  */
-public class Experimento extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener, Validable, Comunicable {
+public class Experimento extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
     /**
      * Creates new form Experimento
@@ -122,8 +124,9 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Act
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSpinnerExperimentoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerExperimentoStateChanged
-        // TODO add your handling code here:
-        this.getListaObservadores().disparaStateChanged(evt);
+        
+        EventoCambiarValor evtCam = new EventoCambiarValor(jSpinnerExperimento);        
+        FormularioExtensible.getGestorEventos().notificarEvento("CambiarValor", evtCam);
     }//GEN-LAST:event_jSpinnerExperimentoStateChanged
 
     @Override
@@ -144,8 +147,6 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Act
 
         return (Boolean.TRUE);
     }
-
-   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -170,4 +171,20 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Act
         System.out.println("recuperar valor");
     }
 
+    
+    @Override
+    public void procesarEventoCambiarValor(EventoCambiarValor evt) {
+              
+       
+        
+        if (evt.getOrigen() instanceof JSlider) {
+
+            JSlider s = (JSlider) evt.getOrigen();
+
+            if ("jSlider1Laboratorio".equals(s.getName())) {
+                recuperarValorExterno("jSlider1Laboratorio", s.getValue());
+            }
+        }
+        
+    }
 }

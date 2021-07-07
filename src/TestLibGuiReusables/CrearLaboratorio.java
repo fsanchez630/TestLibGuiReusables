@@ -6,25 +6,22 @@ package TestLibGuiReusables;
  * and open the template in the editor.
  */
 import LibGuiReusables.*;
+import LibGuiReusables.revision.Observador;
 
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-import javax.swing.event.ChangeListener;
 import javax.swing.event.TreeSelectionListener;
 
 /**
  *
  * @author Javi
  */
-public class CrearLaboratorio extends FormularioArbol implements ActionListener, ChangeListener, TreeSelectionListener {
+public class CrearLaboratorio extends FormularioArbol implements Observador, TreeSelectionListener {
 
     private static FormularioExtensible formularioExtensibleArbol;
 
     private static Laboratorio formularioSimpleD0;
     private static Responsable formularioSimpleD1;
-
-    private static ListaObservadoresEventos listaObs;
 
     public FormularioExtensible CrearLaboratorio() {
         initComponents();
@@ -59,7 +56,7 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static FormularioExtensible crearGUI(ListaObservadoresEventos lisObserv) {
+    public static FormularioExtensible crearGUI() {
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
@@ -67,21 +64,14 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
 
         formularioExtensibleArbol.setnombreContenedor("Laboratorio");
         // crear lista observadores de eventos e incluir el formulario
-        if (lisObserv != null) {
-            listaObs = lisObserv;
-        } else {
-            listaObs = new ListaObservadoresEventos();
-            listaObs.nuevoActionListener(formularioExtensibleArbol);
-            listaObs.nuevoChangeListener(formularioExtensibleArbol);
-        }
-
-        formularioExtensibleArbol.setListaObservadores(listaObs);
 
         formularioSimpleD0 = new Laboratorio();
-        formularioSimpleD0.setListaObservadores(listaObs);
 
         formularioSimpleD1 = new Responsable();
-        formularioSimpleD1.setListaObservadores(listaObs);
+
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioExtensibleArbol);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD1);
 
         try {
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Laboratorio");
@@ -106,8 +96,6 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
         formularioSimpleD0 = null;
         formularioSimpleD1 = null;
 
-        listaObs = null;
-
     }
 
     @Override
@@ -119,12 +107,11 @@ public class CrearLaboratorio extends FormularioArbol implements ActionListener,
         System.out.println("recuperar valor");
     }
 
-    
-     @Override
+    @Override
     public void guardar() {
         super.guardar();
         JOptionPane.showMessageDialog(this, "Se ha guardado el Laboratorio");
 
     }
-    
+
 }

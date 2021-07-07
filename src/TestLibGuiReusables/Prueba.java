@@ -6,16 +6,17 @@
 package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
+import LibGuiReusables.FormularioExtensible;
 import LibGuiReusables.Validable;
-import java.awt.event.ActionListener;
+import LibGuiReusables.revision.EventoCambiarValor;
+import LibGuiReusables.revision.Observador;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeListener;
 
 /**
  *
  * @author Javi
  */
-public class Prueba extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener,Validable, Comunicable {
+public class Prueba extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
     /**
      * Creates new form Prueba
@@ -53,6 +54,8 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements ActionLi
         jLabelNombre.setLabelFor(jTextNombre);
         jLabelNombre.setText("Nombre");
 
+        jTextNombre.setName(""); // NOI18N
+
         jLabelCodigo.setLabelFor(jTextCodigo);
         jLabelCodigo.setText("Código");
 
@@ -64,6 +67,13 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements ActionLi
 
         jLabelTiempo.setLabelFor(jSpinnerTiempo);
         jLabelTiempo.setText("Tiempo");
+
+        jSpinnerPresion.setName("jSpinnerPresion"); // NOI18N
+        jSpinnerPresion.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerPresionStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,27 +132,30 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements ActionLi
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-     @Override
+    private void jSpinnerPresionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerPresionStateChanged
+        // TODO add your handling code here:
+        EventoCambiarValor evtCam = new EventoCambiarValor(jSpinnerPresion);
+        FormularioExtensible.getGestorEventos().notificarEvento("CambiarValor", evtCam);
+    }//GEN-LAST:event_jSpinnerPresionStateChanged
+
+    @Override
     public Boolean validarCampos() {
         System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
-        
-        if (jTextCodigo.getText().isEmpty()){
+
+        if (jTextCodigo.getText().isEmpty()) {
             jTextCodigo.requestFocus();
-             JOptionPane.showMessageDialog(this, "El campo Codigo no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Codigo no puede estar vacio");
             return (Boolean.FALSE);
         }
-        
-        if (jTextNombre.getText().isEmpty()){
+
+        if (jTextNombre.getText().isEmpty()) {
             jTextNombre.requestFocus();
-             JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
             return (Boolean.FALSE);
         }
         return (Boolean.TRUE);
     }
 
-   
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelCodigo;

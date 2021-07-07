@@ -6,21 +6,20 @@ package TestLibGuiReusables;
  * and open the template in the editor.
  */
 import LibGuiReusables.*;
+import LibGuiReusables.revision.Observador;
 
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.event.ChangeEvent;
 
-import javax.swing.event.ChangeListener;
 import javax.swing.event.TreeSelectionListener;
 
 /**
  *
  * @author Javi
  */
-public class CrearExperimento extends FormularioArbol implements ActionListener, ChangeListener, TreeSelectionListener {
+public class CrearExperimento extends FormularioArbol implements Observador, TreeSelectionListener {
 
     private static FormularioExtensible formularioExtensibleArbol;
 
@@ -29,8 +28,6 @@ public class CrearExperimento extends FormularioArbol implements ActionListener,
     private static FormularioExtensible formularioPruebaBasica;
     private static FormularioExtensible formularioPruebaAmpliada;
     private static FormularioExtensible formularioLaboratorio;
-
-    private static ListaObservadoresEventos listaObs;
 
     public FormularioExtensible CrearExperimento() {
         initComponents();
@@ -67,44 +64,35 @@ public class CrearExperimento extends FormularioArbol implements ActionListener,
 
     /**
      *
-     * @param lisObserv
      * @return
      */
-    public static FormularioExtensible crearGUI(ListaObservadoresEventos lisObserv) {
+    public static FormularioExtensible crearGUI() {
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
         formularioExtensibleArbol = new CrearExperimento();
 
         formularioExtensibleArbol.setnombreContenedor("Experimento");
-        // crear lista observadores de eventos e incluir el formulario
-        if (lisObserv != null) {
-            listaObs = lisObserv;
-        } else {
-            listaObs = new ListaObservadoresEventos();
-            listaObs.nuevoActionListener(formularioExtensibleArbol);
-            listaObs.nuevoChangeListener(formularioExtensibleArbol);
-        }
-
-        formularioExtensibleArbol.setListaObservadores(listaObs);
 
         formularioSimpleD0 = new Experimento();
-        formularioSimpleD0.setListaObservadores(listaObs);
 
-        formularioPruebaBasica = CrearPruebaBasica.crearGUI(listaObs);
-        //formularioPruebaBasica.setListaObservadores(listaObs);
+        formularioPruebaBasica = CrearPruebaBasica.crearGUI();
         formularioPruebaBasica.setHayBotones(false); // sin botones
         formularioPruebaBasica.configurarFormulario();
 
-        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI(listaObs);
-        // formularioPruebaAmpliada.setListaObservadores(listaObs);
+        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI();
         formularioPruebaAmpliada.setHayBotones(false); // sin botones
         formularioPruebaAmpliada.configurarFormulario();
 
-        formularioLaboratorio = CrearLaboratorio.crearGUI(listaObs);
-        //formularioLaboratorio.setListaObservadores(listaObs);
+        formularioLaboratorio = CrearLaboratorio.crearGUI();
         formularioLaboratorio.setHayBotones(false); // sin botones
         formularioLaboratorio.configurarFormulario();
+
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioExtensibleArbol);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioPruebaBasica);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioPruebaAmpliada);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioLaboratorio);
 
         try {
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Experimento");
@@ -129,31 +117,6 @@ public class CrearExperimento extends FormularioArbol implements ActionListener,
         formularioExtensibleArbol = null;
 
         formularioSimpleD0 = null;
-
-        listaObs = null;
-
-    }
-
-    @Override
-    public void stateChanged(ChangeEvent evt) {
-
-        if (evt.getSource() instanceof JSpinner) {
-            JSpinner s = (JSpinner) evt.getSource();
-
-            if ("jSpinnerExperimento".equals(s.getName())) {
-                formularioLaboratorio.recuperarValorExterno("jSpinnerExperimento", s.getValue());
-            }
-
-        }
-
-        if (evt.getSource() instanceof JSlider) {
-
-            JSlider s = (JSlider) evt.getSource();
-
-            if ("jSlider1Laboratorio".equals(s.getName())) {
-                formularioSimpleD0.recuperarValorExterno("jSlider1Laboratorio", s.getValue());
-            }
-        }
 
     }
 

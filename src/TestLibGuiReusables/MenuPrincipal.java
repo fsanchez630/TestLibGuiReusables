@@ -128,7 +128,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botonCrearPruebaAmpliadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPruebaAmpliadaActionPerformed
         desactivarBotones();
-        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI(null);
+        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI();
         formularioPruebaAmpliada.setHayBotones(true); // con botones
         formularioPruebaAmpliada.configurarFormulario();
         formularioPruebaAmpliada.setVisible(true);
@@ -137,7 +137,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botonCrearPruebaBasicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearPruebaBasicaActionPerformed
         desactivarBotones();
-        formularioPruebaBasica = CrearPruebaBasica.crearGUI(null);
+        formularioPruebaBasica = CrearPruebaBasica.crearGUI();
         formularioPruebaBasica.setHayBotones(true);  // con botones
         formularioPruebaBasica.configurarFormulario();
         formularioPruebaBasica.setVisible(true);
@@ -145,7 +145,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botonCrearLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearLaboratorioActionPerformed
         desactivarBotones();
-        formularioLaboratorio = CrearLaboratorio.crearGUI(null);
+        formularioLaboratorio = CrearLaboratorio.crearGUI();
         formularioLaboratorio.setHayBotones(true);  // con botones
         formularioLaboratorio.configurarFormulario();
         formularioLaboratorio.setVisible(true);
@@ -154,7 +154,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void botonCrearExperimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearExperimentoActionPerformed
         desactivarBotones();
 
-        formularioExperimento = CrearExperimento.crearGUI(null);
+        formularioExperimento = CrearExperimento.crearGUI();
         formularioExperimento.setHayBotones(true);  // con botones
         formularioExperimento.configurarFormulario();
         formularioExperimento.setVisible(true);

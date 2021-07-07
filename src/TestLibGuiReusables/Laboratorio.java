@@ -6,16 +6,19 @@
 package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
+import LibGuiReusables.FormularioExtensible;
 import LibGuiReusables.Validable;
-import java.awt.event.ActionListener;
+import LibGuiReusables.revision.EventoCambiarValor;
+import LibGuiReusables.revision.Observador;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeListener;
+import javax.swing.JSlider;
+import javax.swing.JSpinner;
 
 /**
  *
  * @author Javi
  */
-public class Laboratorio extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener, Validable, Comunicable {
+public class Laboratorio extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
     /**
      * Creates new form Experimento
@@ -127,7 +130,8 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
 
     private void jSlider1LaboratorioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1LaboratorioStateChanged
         // TODO add your handling code here:
-        this.getListaObservadores().disparaStateChanged(evt);
+        EventoCambiarValor evtCam = new EventoCambiarValor(jSlider1Laboratorio);        
+        FormularioExtensible.getGestorEventos().notificarEvento("CambiarValor", evtCam);
     }//GEN-LAST:event_jSlider1LaboratorioStateChanged
 
     @Override
@@ -178,6 +182,19 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Act
         System.out.println("recuperar valor");
     }
 
-   
+   @Override
+    public void procesarEventoCambiarValor(EventoCambiarValor evt) {
+                                    
+        
+        if (evt.getOrigen() instanceof JSpinner) {
+            JSpinner s = (JSpinner) evt.getOrigen();
+
+            if ("jSpinnerExperimento".equals(s.getName())) {
+                recuperarValorExterno("jSpinnerExperimento", s.getValue());
+            }
+
+        }
+        
+    }
 
 }

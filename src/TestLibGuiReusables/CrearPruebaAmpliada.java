@@ -6,17 +6,15 @@ package TestLibGuiReusables;
  * and open the template in the editor.
  */
 import LibGuiReusables.*;
+import LibGuiReusables.revision.Observador;
 
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-
-import javax.swing.event.ChangeListener;
 
 /**
  *
  * @author Javi
  */
-public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionListener, ChangeListener {
+public class CrearPruebaAmpliada extends FormularioPorFichas implements Observador {
 
     private static FormularioExtensible formularioExtensiblePorFichas;
 
@@ -24,8 +22,7 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
     private static PruebaAmpliada formularioSimpleD1;
 
     // private static FormularioExtensible formularioPruebaBasica ;
-    private static ListaObservadoresEventos listaObs;
-
+    // private static ListaObservadoresEventos listaObs;
     public FormularioExtensible CrearPruebaAmpliada() {
         initComponents();
 
@@ -59,43 +56,29 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static FormularioExtensible crearGUI(ListaObservadoresEventos lisObserv) {
+    public static FormularioExtensible crearGUI() {
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
         formularioExtensiblePorFichas = new CrearPruebaAmpliada();
-
         formularioExtensiblePorFichas.setnombreContenedor("Prueba Ampliada");
-        // crear lista observadores de eventos e incluir el formulario
-        if (lisObserv != null) {
-            listaObs = lisObserv;
-        } else {
-            listaObs = new ListaObservadoresEventos();
-            listaObs.nuevoActionListener(formularioExtensiblePorFichas);
-            listaObs.nuevoChangeListener(formularioExtensiblePorFichas);
-        }
 
-        formularioExtensiblePorFichas.setListaObservadores(listaObs);
-
+        
         formularioSimpleD0 = new Prueba();
-        formularioSimpleD0.setListaObservadores(listaObs);
-        // formularioSimpleD0.configurarFormulario(false);
-
         formularioSimpleD1 = new PruebaAmpliada();
-        formularioSimpleD1.setListaObservadores(listaObs);
-        //   formularioSimpleD1.configurarFormulario(false);
-
-        //formularioPruebaBasica = CrearPruebaBasica.crearGUI();
+        
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioExtensiblePorFichas);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD1);
+        
         try {
             formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD0, "Datos Basicos");
             formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD1, "Datos Ampliados");
-            //   formularioExtensiblePorFichas.addHijoExtensible(formularioPruebaBasica, "Prueba Basica");
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(formularioExtensiblePorFichas, e.getMessage());
         }
         return (formularioExtensiblePorFichas);
-        //formularioExtensiblePorFichas.configurarFormulario(true);
-        //formularioExtensiblePorFichas.setVisible(true);
 
     }
 
@@ -108,8 +91,6 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements ActionLi
 
         formularioSimpleD0 = null;
         formularioSimpleD1 = null;
-
-        listaObs = null;
 
     }
 

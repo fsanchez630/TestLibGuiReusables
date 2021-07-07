@@ -6,25 +6,22 @@ package TestLibGuiReusables;
  * and open the template in the editor.
  */
 import LibGuiReusables.*;
+import LibGuiReusables.revision.Observador;
 
-import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-
-import javax.swing.event.ChangeListener;
 
 /**
  *
  * @author Javi
  */
-public class CrearPruebaBasica extends FormularioSimple implements ActionListener, ChangeListener {
+public class CrearPruebaBasica extends FormularioSimple implements Observador {
 
     private static FormularioExtensible formularioExtensibleSimple;
 
     private static Prueba formularioSimpleD0;
     private static PruebaBasica formularioSimpleD1;
 
-    private static ListaObservadoresEventos listaObs;
-
+    //private static ListaObservadoresEventos listaObs;
     public FormularioExtensible CrearPruebaBasica() {
         initComponents();
 
@@ -58,31 +55,21 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static FormularioExtensible crearGUI(ListaObservadoresEventos lisObserv) {
+    public static FormularioExtensible crearGUI() {
         incializar();
 
         // CREAR FORMULARIO PRINCIPAL
         formularioExtensibleSimple = new CrearPruebaBasica();
 
         formularioExtensibleSimple.setnombreContenedor("Prueba Basica");
-        // crear lista observadores de eventos e incluir el formulario
-        if (lisObserv != null) {
-            listaObs = lisObserv;
-        } else {
-            listaObs = new ListaObservadoresEventos();
-            listaObs.nuevoActionListener(formularioExtensibleSimple);
-            listaObs.nuevoChangeListener(formularioExtensibleSimple);
-        }
-
-        formularioExtensibleSimple.setListaObservadores(listaObs);
 
         formularioSimpleD0 = new Prueba();
-        formularioSimpleD0.setListaObservadores(listaObs);
-        // formularioSimpleD0.configurarFormulario(false);
 
         formularioSimpleD1 = new PruebaBasica();
-        formularioSimpleD1.setListaObservadores(listaObs);
-        //   formularioSimpleD1.configurarFormulario(false);
+
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioExtensibleSimple);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
+        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD1);
 
         try {
             formularioExtensibleSimple.addHijoExtensible(formularioSimpleD0, formularioSimpleD0.getnombreContenedor());
@@ -92,8 +79,6 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
         }
 
         return (formularioExtensibleSimple);
-        //formularioExtensibleSimple.configurarFormulario(true);
-        //formularioExtensibleSimple.setVisible(true);
 
     }
 
@@ -107,16 +92,13 @@ public class CrearPruebaBasica extends FormularioSimple implements ActionListene
         formularioSimpleD0 = null;
         formularioSimpleD1 = null;
 
-        listaObs = null;
-
+        //listaObs = null;
     }
-    
-     @Override
+
+    @Override
     public void guardar() {
         super.guardar();
         JOptionPane.showMessageDialog(this, "Se ha guardado la Prueba Basica");
-
-       
 
     }
 

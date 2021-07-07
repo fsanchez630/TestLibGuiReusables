@@ -7,15 +7,17 @@ package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.Validable;
-import java.awt.event.ActionListener;
+import LibGuiReusables.revision.EventoCambiarValor;
+import LibGuiReusables.revision.Observador;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeListener;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Javi
  */
-public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener, Validable, Comunicable {
+public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
     /**
      * Creates new form Experimento
@@ -158,4 +160,31 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+
+    @Override
+    public void recuperarValorExterno(String nombreComponente, Object valor) {
+
+        if ("jSpinnerPresion".equals(nombreComponente)) {
+            jTextArea1.setText(((Integer) valor).toString());
+        }
+        System.out.println("recuperar valor");
+    }
+
+    
+    @Override
+    public void procesarEventoCambiarValor(EventoCambiarValor evt) {
+              
+       
+        
+        if (evt.getOrigen() instanceof JSpinner) {
+
+            JSpinner s = (JSpinner) evt.getOrigen();
+
+            if ("jSpinnerPresion".equals(s.getName())) {
+                recuperarValorExterno("jSpinnerPresion", s.getValue());
+            }
+        }
+        
+    }
 }

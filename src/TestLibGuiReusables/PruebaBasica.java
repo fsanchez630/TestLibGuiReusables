@@ -7,15 +7,13 @@ package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
 import LibGuiReusables.Validable;
-import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
-import javax.swing.event.ChangeListener;
+import LibGuiReusables.revision.Observador;
 
 /**
  *
  * @author Javi
  */
-public class PruebaBasica extends LibGuiReusables.FormularioSimple implements ActionListener, ChangeListener,Validable, Comunicable {
+public class PruebaBasica extends LibGuiReusables.FormularioSimple implements Observador,Validable, Comunicable {
 
     /**
      * Creates new form PruebaBasica
