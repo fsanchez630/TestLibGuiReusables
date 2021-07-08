@@ -9,9 +9,6 @@ import LibGuiReusables.*;
 import LibGuiReusables.Observador;
 
 import javax.swing.JOptionPane;
-import javax.swing.JSlider;
-import javax.swing.JSpinner;
-import javax.swing.event.ChangeEvent;
 
 import javax.swing.event.TreeSelectionListener;
 
@@ -19,7 +16,7 @@ import javax.swing.event.TreeSelectionListener;
  *
  * @author Javi
  */
-public class CrearExperimento extends FormularioArbol implements Observador, TreeSelectionListener {
+public class CrearExperimento extends FormularioArbol implements Observador {
 
     private static FormularioExtensible formularioExtensibleArbol;
 
@@ -93,6 +90,8 @@ public class CrearExperimento extends FormularioArbol implements Observador, Tre
         FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioPruebaBasica);
         FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioPruebaAmpliada);
         FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioLaboratorio);
+        
+        FormularioExtensible.getGestorEventos().addObservador("SelNodo", formularioExtensibleArbol);
 
         try {
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Experimento");

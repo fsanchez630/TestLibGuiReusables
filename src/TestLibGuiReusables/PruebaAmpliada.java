@@ -11,7 +11,6 @@ import LibGuiReusables.EventoCambiarValor;
 import LibGuiReusables.Observador;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 
 /**
  *
