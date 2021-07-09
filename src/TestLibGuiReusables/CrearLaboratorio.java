@@ -54,24 +54,31 @@ public class CrearLaboratorio extends FormularioArbol implements Observador {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static FormularioExtensible crearGUI() {
+    public static FormularioExtensible crearGUI(GestorEventos gesEven) {
         incializar();
+        GestorEventos gestorEventos;
+        if (gesEven == null) {
+            gestorEventos = new GestorEventos();
+        } else {
+            gestorEventos = gesEven;
+        }
 
         // CREAR FORMULARIO PRINCIPAL
         formularioExtensibleArbol = new CrearLaboratorio();
-
+        formularioExtensibleArbol.setGestorEventos(gestorEventos);
         formularioExtensibleArbol.setnombreContenedor("Laboratorio");
         // crear lista observadores de eventos e incluir el formulario
 
         formularioSimpleD0 = new Laboratorio();
-
+        formularioSimpleD0.setGestorEventos(gestorEventos);
         formularioSimpleD1 = new Responsable();
+        formularioSimpleD1.setGestorEventos(gestorEventos);
+        
+        formularioExtensibleArbol.getGestorEventos().addObservador("CambiarValor", formularioExtensibleArbol);
+        formularioExtensibleArbol.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
+        formularioExtensibleArbol.getGestorEventos().addObservador("CambiarValor", formularioSimpleD1);
 
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioExtensibleArbol);
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD1);
-
-        FormularioExtensible.getGestorEventos().addObservador("SelNodo", formularioExtensibleArbol);
+        formularioExtensibleArbol.getGestorEventos().addObservador("SelNodo", formularioExtensibleArbol);
 
         try {
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Laboratorio");

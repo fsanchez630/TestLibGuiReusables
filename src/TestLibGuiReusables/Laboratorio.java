@@ -6,12 +6,10 @@
 package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
-import LibGuiReusables.FormularioExtensible;
 import LibGuiReusables.Validable;
 import LibGuiReusables.EventoCambiarValor;
 import LibGuiReusables.Observador;
 import javax.swing.JOptionPane;
-import javax.swing.JSlider;
 import javax.swing.JSpinner;
 
 /**
@@ -47,6 +45,7 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Obs
         jLabelNombre3 = new javax.swing.JLabel();
         jLabelNombre4 = new javax.swing.JLabel();
         jSlider1Laboratorio = new javax.swing.JSlider();
+        jLabelPersonas = new javax.swing.JLabel();
 
         setTitle("Laboratorio");
         setSize(new java.awt.Dimension(450, 250));
@@ -95,8 +94,11 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Obs
                         .addGap(0, 0, 0)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSlider1Laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jSlider1Laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
@@ -119,9 +121,10 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Obs
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNombre3))
                 .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelNombre4)
-                    .addComponent(jSlider1Laboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSlider1Laboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -130,8 +133,10 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Obs
 
     private void jSlider1LaboratorioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1LaboratorioStateChanged
         // TODO add your handling code here:
+        jLabelPersonas.setText(((Integer)jSlider1Laboratorio.getValue()).toString());
         EventoCambiarValor evtCam = new EventoCambiarValor(jSlider1Laboratorio);        
-        FormularioExtensible.getGestorEventos().notificarEvento("CambiarValor", evtCam);
+        getGestorEventos().notificarEvento("CambiarValor", evtCam);
+        
     }//GEN-LAST:event_jSlider1LaboratorioStateChanged
 
     @Override
@@ -165,6 +170,7 @@ public class Laboratorio extends LibGuiReusables.FormularioSimple implements Obs
     private javax.swing.JLabel jLabelNombre2;
     private javax.swing.JLabel jLabelNombre3;
     private javax.swing.JLabel jLabelNombre4;
+    private javax.swing.JLabel jLabelPersonas;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSlider jSlider1Laboratorio;
     private javax.swing.JSpinner jSpinner1;

@@ -135,7 +135,7 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements Observad
     private void jSpinnerPresionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerPresionStateChanged
         // TODO add your handling code here:
         EventoCambiarValor evtCam = new EventoCambiarValor(jSpinnerPresion);
-        FormularioExtensible.getGestorEventos().notificarEvento("CambiarValor", evtCam);
+        getGestorEventos().notificarEvento("CambiarValor", evtCam);
     }//GEN-LAST:event_jSpinnerPresionStateChanged
 
     @Override

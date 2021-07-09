@@ -55,21 +55,28 @@ public class CrearPruebaBasica extends FormularioSimple implements Observador {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static FormularioExtensible crearGUI() {
+    public static FormularioExtensible crearGUI(GestorEventos gesEven) {
         incializar();
 
+        GestorEventos gestorEventos;
+        if (gesEven == null) {
+            gestorEventos = new GestorEventos();
+        } else {
+            gestorEventos = gesEven;
+        }
         // CREAR FORMULARIO PRINCIPAL
         formularioExtensibleSimple = new CrearPruebaBasica();
-
+        formularioExtensibleSimple.setGestorEventos(gestorEventos);
         formularioExtensibleSimple.setnombreContenedor("Prueba Basica");
 
         formularioSimpleD0 = new Prueba();
-
+        formularioSimpleD0.setGestorEventos(gestorEventos);
         formularioSimpleD1 = new PruebaBasica();
+        formularioSimpleD1.setGestorEventos(gestorEventos);
 
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioExtensibleSimple);
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD1);
+        formularioExtensibleSimple.getGestorEventos().addObservador("CambiarValor", formularioExtensibleSimple);
+        formularioExtensibleSimple.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
+        formularioExtensibleSimple.getGestorEventos().addObservador("CambiarValor", formularioSimpleD1);
 
         try {
             formularioExtensibleSimple.addHijoExtensible(formularioSimpleD0, formularioSimpleD0.getnombreContenedor());

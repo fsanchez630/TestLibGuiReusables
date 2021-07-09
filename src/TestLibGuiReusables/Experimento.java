@@ -126,7 +126,7 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Obs
     private void jSpinnerExperimentoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerExperimentoStateChanged
         
         EventoCambiarValor evtCam = new EventoCambiarValor(jSpinnerExperimento);        
-        FormularioExtensible.getGestorEventos().notificarEvento("CambiarValor", evtCam);
+        getGestorEventos().notificarEvento("CambiarValor", evtCam);
     }//GEN-LAST:event_jSpinnerExperimentoStateChanged
 
     @Override

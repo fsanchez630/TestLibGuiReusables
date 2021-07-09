@@ -10,8 +10,6 @@ import LibGuiReusables.Observador;
 
 import javax.swing.JOptionPane;
 
-import javax.swing.event.TreeSelectionListener;
-
 /**
  *
  * @author Javi
@@ -61,37 +59,46 @@ public class CrearExperimento extends FormularioArbol implements Observador {
 
     /**
      *
+     * @param gesEven
      * @return
      */
-    public static FormularioExtensible crearGUI() {
+    public static FormularioExtensible crearGUI(GestorEventos gesEven) {
         incializar();
+
+        GestorEventos gestorEventos;
+        if (gesEven == null) {
+            gestorEventos = new GestorEventos();
+        } else {
+            gestorEventos = gesEven;
+        }
 
         // CREAR FORMULARIO PRINCIPAL
         formularioExtensibleArbol = new CrearExperimento();
-
+        formularioExtensibleArbol.setGestorEventos(gestorEventos);
         formularioExtensibleArbol.setnombreContenedor("Experimento");
 
         formularioSimpleD0 = new Experimento();
+        formularioSimpleD0.setGestorEventos(gestorEventos);
 
-        formularioPruebaBasica = CrearPruebaBasica.crearGUI();
+        formularioPruebaBasica = CrearPruebaBasica.crearGUI(gestorEventos);
         formularioPruebaBasica.setHayBotones(false); // sin botones
         formularioPruebaBasica.configurarFormulario();
 
-        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI();
+        formularioPruebaAmpliada = CrearPruebaAmpliada.crearGUI(gestorEventos);
         formularioPruebaAmpliada.setHayBotones(false); // sin botones
         formularioPruebaAmpliada.configurarFormulario();
 
-        formularioLaboratorio = CrearLaboratorio.crearGUI();
+        formularioLaboratorio = CrearLaboratorio.crearGUI(gestorEventos);
         formularioLaboratorio.setHayBotones(false); // sin botones
         formularioLaboratorio.configurarFormulario();
 
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioExtensibleArbol);
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioPruebaBasica);
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioPruebaAmpliada);
-        FormularioExtensible.getGestorEventos().addObservador("CambiarValor", formularioLaboratorio);
-        
-        FormularioExtensible.getGestorEventos().addObservador("SelNodo", formularioExtensibleArbol);
+        formularioExtensibleArbol.getGestorEventos().addObservador("CambiarValor", formularioExtensibleArbol);
+        formularioExtensibleArbol.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
+        formularioExtensibleArbol.getGestorEventos().addObservador("CambiarValor", formularioPruebaBasica);
+        formularioExtensibleArbol.getGestorEventos().addObservador("CambiarValor", formularioPruebaAmpliada);
+        formularioExtensibleArbol.getGestorEventos().addObservador("CambiarValor", formularioLaboratorio);
+
+        formularioExtensibleArbol.getGestorEventos().addObservador("SelNodo", formularioExtensibleArbol);
 
         try {
             formularioExtensibleArbol.addHijoExtensible(formularioSimpleD0, "Experimento");
