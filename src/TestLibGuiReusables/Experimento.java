@@ -6,7 +6,6 @@
 package TestLibGuiReusables;
 
 import LibGuiReusables.Comunicable;
-import LibGuiReusables.FormularioExtensible;
 import LibGuiReusables.Validable;
 import LibGuiReusables.EventoCambiarValor;
 import LibGuiReusables.Observador;
