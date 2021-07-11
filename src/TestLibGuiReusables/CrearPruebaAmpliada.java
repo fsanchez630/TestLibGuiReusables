@@ -27,7 +27,7 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements Observad
         initComponents();
 
         FormularioExtensible retorno;
-        retorno = FactoriaFormularios.crearFormulario(FormularioExtensible.TipoContenedor.PORFICHAS);
+        retorno = FactoriaFormularioExtensible.crearFormulario(FormularioExtensible.TipoFormulario.PORFICHAS);
         return retorno;
     }
 

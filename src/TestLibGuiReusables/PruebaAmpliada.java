@@ -129,13 +129,13 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
 
         if (jList1.isSelectionEmpty()) {
             jList1.requestFocus();
-            JOptionPane.showMessageDialog(this, "Debe seleccinar un Color");
+            JOptionPane.showMessageDialog(this, "Debe seleccinar un Color , en Prueba AMpliada");
             return (Boolean.FALSE);
         }
 
         if (jTextArea1.getText().isEmpty()) {
             jTextArea1.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Observaciones no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Observaciones de Prueba Ampliada no puede estar vacio");
             return (Boolean.FALSE);
         }
         return (Boolean.TRUE);

@@ -115,7 +115,7 @@ public class Responsable extends LibGuiReusables.FormularioSimple implements Obs
         
         if (jTextNombre.getText().isEmpty()) {
             jTextNombre.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Nombre Responsable no puede estar vacio");
             return (Boolean.FALSE);
         }
         

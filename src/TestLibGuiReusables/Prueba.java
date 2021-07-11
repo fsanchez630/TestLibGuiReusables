@@ -144,13 +144,13 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements Observad
 
         if (jTextCodigo.getText().isEmpty()) {
             jTextCodigo.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Codigo no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Codigo Prueba no puede estar vacio");
             return (Boolean.FALSE);
         }
 
         if (jTextNombre.getText().isEmpty()) {
             jTextNombre.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Nombre Prueba no puede estar vacio");
             return (Boolean.FALSE);
         }
         return (Boolean.TRUE);

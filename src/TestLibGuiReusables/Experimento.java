@@ -134,13 +134,13 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Obs
 
         if (jTextNombre.getText().isEmpty()) {
             jTextNombre.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Nombre no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Nombre Experimento no puede estar vacio");
             return (Boolean.FALSE);
         }
 
         if (jTextNombre1.getText().isEmpty()) {
             jTextNombre1.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Descripcion no puede estar vacio");
+            JOptionPane.showMessageDialog(this, "El campo Descripcion Experimento no puede estar vacio");
             return (Boolean.FALSE);
         }
 
