@@ -6,7 +6,7 @@ package TestLibGuiReusables;
  * and open the template in the editor.
  */
 import LibGuiReusables.*;
-import LibGuiReusables.Observador;
+import LibGuiReusables.interfaces.Observador;
 
 import javax.swing.JOptionPane;
 
@@ -116,10 +116,14 @@ public class CrearLaboratorio extends FormularioArbol implements Observador {
     }
 
     @Override
-    public void guardar() {
-        super.guardar();
+    public void guardarFormulario() {
         JOptionPane.showMessageDialog(this, "Se ha guardado el Laboratorio");
 
+    }
+    
+    @Override
+    public void limpiarFormulario() {
+        this.dispose();
     }
 
 }

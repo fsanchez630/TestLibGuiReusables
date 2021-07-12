@@ -5,9 +5,9 @@
  */
 package TestLibGuiReusables;
 
-import LibGuiReusables.Comunicable;
-import LibGuiReusables.Validable;
-import LibGuiReusables.Observador;
+import LibGuiReusables.interfaces.Comunicable;
+import LibGuiReusables.interfaces.Validable;
+import LibGuiReusables.interfaces.Observador;
 
 /**
  *

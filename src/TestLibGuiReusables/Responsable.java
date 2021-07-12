@@ -5,9 +5,9 @@
  */
 package TestLibGuiReusables;
 
-import LibGuiReusables.Comunicable;
-import LibGuiReusables.Validable;
-import LibGuiReusables.Observador;
+import LibGuiReusables.interfaces.Comunicable;
+import LibGuiReusables.interfaces.Validable;
+import LibGuiReusables.interfaces.Observador;
 import javax.swing.JOptionPane;
 
 /**
@@ -126,8 +126,7 @@ public class Responsable extends LibGuiReusables.FormularioSimple implements Obs
     }
 
     @Override
-    public void guardar() {
-        super.guardar();
+    public void guardarFormulario() {
         JOptionPane.showMessageDialog(this, "Se ha guardado el Responsable");
        
 
