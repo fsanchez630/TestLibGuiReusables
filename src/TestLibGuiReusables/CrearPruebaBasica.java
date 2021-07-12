@@ -26,7 +26,8 @@ public class CrearPruebaBasica extends FormularioSimple implements Observador {
         initComponents();
 
         FormularioExtensible retorno;
-        retorno = FactoriaFormularioExtensible.crearFormulario(FormularioExtensible.TipoFormulario.SIMPLE);
+        FactoriaFormularioExtensible fabricaFormulario = FactoriaFormularioExtensible.getInstancia();
+        retorno = fabricaFormulario.crearFormulario(FormularioExtensible.TipoFormulario.SIMPLE);
         return retorno;
     }
 

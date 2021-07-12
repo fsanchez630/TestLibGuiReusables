@@ -25,7 +25,8 @@ public class CrearLaboratorio extends FormularioArbol implements Observador {
         initComponents();
 
         FormularioExtensible retorno;
-        retorno = FactoriaFormularioExtensible.crearFormulario(FormularioExtensible.TipoFormulario.ARBOL);
+        FactoriaFormularioExtensible fabricaFormulario = FactoriaFormularioExtensible.getInstancia();
+        retorno = fabricaFormulario.crearFormulario(FormularioExtensible.TipoFormulario.ARBOL);
         return retorno;
     }
 

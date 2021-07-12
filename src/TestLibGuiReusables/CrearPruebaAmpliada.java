@@ -27,7 +27,8 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements Observad
         initComponents();
 
         FormularioExtensible retorno;
-        retorno = FactoriaFormularioExtensible.crearFormulario(FormularioExtensible.TipoFormulario.PORFICHAS);
+        FactoriaFormularioExtensible fabricaFormulario = FactoriaFormularioExtensible.getInstancia();
+        retorno = fabricaFormulario.crearFormulario(FormularioExtensible.TipoFormulario.PORFICHAS);
         return retorno;
     }
 
@@ -58,7 +59,7 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements Observad
 
     public static FormularioExtensible crearGUI(GestorEventos gesEven) {
         incializar();
-        
+
         GestorEventos gestorEventos;
         if (gesEven == null) {
             gestorEventos = new GestorEventos();
@@ -71,16 +72,15 @@ public class CrearPruebaAmpliada extends FormularioPorFichas implements Observad
         formularioExtensiblePorFichas.setGestorEventos(gestorEventos);
         formularioExtensiblePorFichas.setnombreContenedor("Prueba Ampliada");
 
-        
         formularioSimpleD0 = new Prueba();
         formularioSimpleD0.setGestorEventos(gestorEventos);
         formularioSimpleD1 = new PruebaAmpliada();
         formularioSimpleD1.setGestorEventos(gestorEventos);
-        
+
         formularioExtensiblePorFichas.getGestorEventos().addObservador("CambiarValor", formularioExtensiblePorFichas);
         formularioExtensiblePorFichas.getGestorEventos().addObservador("CambiarValor", formularioSimpleD0);
         formularioExtensiblePorFichas.getGestorEventos().addObservador("CambiarValor", formularioSimpleD1);
-        
+
         try {
             formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD0, "Datos Basicos");
             formularioExtensiblePorFichas.addHijoExtensible(formularioSimpleD1, "Datos Ampliados");
