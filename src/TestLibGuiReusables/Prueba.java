@@ -6,15 +6,15 @@
 package TestLibGuiReusables;
 
 import LibGuiReusables.interfaces.Comunicable;
-import LibGuiReusables.FormularioExtensible;
 import LibGuiReusables.interfaces.Validable;
 import LibGuiReusables.EventoCambiarValor;
 import LibGuiReusables.interfaces.Observador;
 import javax.swing.JOptionPane;
 
 /**
+ * formulario diseñado de tipo simple
  *
- * @author Javi
+ * @author Francisco Javier Sánchez Lozano
  */
 public class Prueba extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
@@ -25,6 +25,34 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements Observad
         initComponents();
     }
 
+    // metodos que se sobrescriben de la interfaz Validable
+    @Override
+    public Boolean validarCampos() {
+        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+
+        if (jTextCodigo.getText().isEmpty()) {
+            jTextCodigo.requestFocus();
+            JOptionPane.showMessageDialog(this, "El campo Codigo Prueba no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+
+        if (jTextNombre.getText().isEmpty()) {
+            jTextNombre.requestFocus();
+            JOptionPane.showMessageDialog(this, "El campo Nombre Prueba no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+        return (Boolean.TRUE);
+    }
+ 
+    @Override
+    public void guardarFormulario() {
+       
+    }
+
+    @Override
+    public void limpiarFormulario() {
+        this.dispose();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,24 +166,7 @@ public class Prueba extends LibGuiReusables.FormularioSimple implements Observad
         getGestorEventos().notificarEvento("CambiarValor", evtCam);
     }//GEN-LAST:event_jSpinnerPresionStateChanged
 
-    @Override
-    public Boolean validarCampos() {
-        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
-
-        if (jTextCodigo.getText().isEmpty()) {
-            jTextCodigo.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Codigo Prueba no puede estar vacio");
-            return (Boolean.FALSE);
-        }
-
-        if (jTextNombre.getText().isEmpty()) {
-            jTextNombre.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Nombre Prueba no puede estar vacio");
-            return (Boolean.FALSE);
-        }
-        return (Boolean.TRUE);
-    }
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelCodigo;

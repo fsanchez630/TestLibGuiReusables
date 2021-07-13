@@ -11,16 +11,42 @@ import LibGuiReusables.interfaces.Observador;
 import javax.swing.JOptionPane;
 
 /**
+ * formulario diseñado de tipo simple
  *
- * @author Javi
+ * @author Francisco Javier Sánchez Lozano
  */
-public class Responsable extends LibGuiReusables.FormularioSimple implements Observador,Validable, Comunicable {
+public class Responsable extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
     /**
      * Creates new form Experimento
      */
     public Responsable() {
         initComponents();
+    }
+
+    // metodos que se sobrescriben de la interfaz Validable
+    @Override
+    public Boolean validarCampos() {
+        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+
+        if (jTextNombre.getText().isEmpty()) {
+            jTextNombre.requestFocus();
+            JOptionPane.showMessageDialog(this, "El campo Nombre Responsable no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+
+        return (Boolean.TRUE);
+    }
+
+    @Override
+    public void guardarFormulario() {
+        JOptionPane.showMessageDialog(this, "Se ha guardado el Responsable");
+
+    }
+
+    @Override
+    public void limpiarFormulario() {
+        this.dispose();
     }
 
     /**
@@ -107,32 +133,6 @@ public class Responsable extends LibGuiReusables.FormularioSimple implements Obs
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-     @Override
-    public Boolean validarCampos() {
-        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
-        
-        
-        if (jTextNombre.getText().isEmpty()) {
-            jTextNombre.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Nombre Responsable no puede estar vacio");
-            return (Boolean.FALSE);
-        }
-        
-        
-
-        
-        return (Boolean.TRUE);
-    }
-
-    @Override
-    public void guardarFormulario() {
-        JOptionPane.showMessageDialog(this, "Se ha guardado el Responsable");
-       
-
-    }
-
-   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

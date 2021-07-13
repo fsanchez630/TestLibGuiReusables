@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 
 /**
+ * formulario diseñado de tipo simple
  *
- * @author Javi
+ * @author Francisco Javier Sánchez Lozano
  */
 public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
@@ -23,6 +24,60 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
      */
     public PruebaAmpliada() {
         initComponents();
+    }
+
+    // metodos que se sobrescriben de la interfaz Validable
+    @Override
+    public Boolean validarCampos() {
+        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+
+        if (jList1.isSelectionEmpty()) {
+            jList1.requestFocus();
+            JOptionPane.showMessageDialog(this, "Debe seleccinar un Color , en Prueba AMpliada");
+            return (Boolean.FALSE);
+        }
+
+        if (jTextArea1.getText().isEmpty()) {
+            jTextArea1.requestFocus();
+            JOptionPane.showMessageDialog(this, "El campo Observaciones de Prueba Ampliada no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+        return (Boolean.TRUE);
+    }
+
+    @Override
+    public void guardarFormulario() {
+
+    }
+
+    @Override
+    public void limpiarFormulario() {
+        this.dispose();
+    }
+
+    // metodo que se sobrescribe de la interfaz Comunicable
+    @Override
+    public void recuperarValorExterno(String nombreComponente, Object valor) {
+
+        if ("jSpinnerPresion".equals(nombreComponente)) {
+            jTextArea1.setText(((Integer) valor).toString());
+        }
+        System.out.println("recuperar valor");
+    }
+
+    // metodo que se sobrescribe de la interfaz Observador
+    @Override
+    public void procesarEventoCambiarValor(EventoCambiarValor evt) {
+
+        if (evt.getOrigen() instanceof JSpinner) {
+
+            JSpinner s = (JSpinner) evt.getOrigen();
+
+            if ("jSpinnerPresion".equals(s.getName())) {
+                recuperarValorExterno("jSpinnerPresion", s.getValue());
+            }
+        }
+
     }
 
     /**
@@ -123,27 +178,6 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
     }// </editor-fold>//GEN-END:initComponents
 
-    @Override
-    public Boolean validarCampos() {
-        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
-
-        if (jList1.isSelectionEmpty()) {
-            jList1.requestFocus();
-            JOptionPane.showMessageDialog(this, "Debe seleccinar un Color , en Prueba AMpliada");
-            return (Boolean.FALSE);
-        }
-
-        if (jTextArea1.getText().isEmpty()) {
-            jTextArea1.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Observaciones de Prueba Ampliada no puede estar vacio");
-            return (Boolean.FALSE);
-        }
-        return (Boolean.TRUE);
-    }
-
-    
-
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
@@ -160,30 +194,4 @@ public class PruebaAmpliada extends LibGuiReusables.FormularioSimple implements 
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
-
-    @Override
-    public void recuperarValorExterno(String nombreComponente, Object valor) {
-
-        if ("jSpinnerPresion".equals(nombreComponente)) {
-            jTextArea1.setText(((Integer) valor).toString());
-        }
-        System.out.println("recuperar valor");
-    }
-
-    
-    @Override
-    public void procesarEventoCambiarValor(EventoCambiarValor evt) {
-              
-       
-        
-        if (evt.getOrigen() instanceof JSpinner) {
-
-            JSpinner s = (JSpinner) evt.getOrigen();
-
-            if ("jSpinnerPresion".equals(s.getName())) {
-                recuperarValorExterno("jSpinnerPresion", s.getValue());
-            }
-        }
-        
-    }
 }

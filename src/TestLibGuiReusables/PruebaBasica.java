@@ -10,16 +10,34 @@ import LibGuiReusables.interfaces.Validable;
 import LibGuiReusables.interfaces.Observador;
 
 /**
+ * formulario diseñado de tipo simple
  *
- * @author Javi
+ * @author Francisco Javier Sánchez Lozano
  */
-public class PruebaBasica extends LibGuiReusables.FormularioSimple implements Observador,Validable, Comunicable {
+public class PruebaBasica extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
     /**
      * Creates new form PruebaBasica
      */
     public PruebaBasica() {
         initComponents();
+    }
+
+    // metodos que se sobrescriben de la interfaz Validable
+    @Override
+    public Boolean validarCampos() {
+        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+        return (Boolean.TRUE);
+    }
+
+    @Override
+    public void guardarFormulario() {
+
+    }
+
+    @Override
+    public void limpiarFormulario() {
+        this.dispose();
     }
 
     /**
@@ -73,15 +91,6 @@ public class PruebaBasica extends LibGuiReusables.FormularioSimple implements Ob
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-     @Override
-    public Boolean validarCampos() {
-        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
-        return (Boolean.TRUE);
-    }
-
-   
-
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBoxOpcion1;

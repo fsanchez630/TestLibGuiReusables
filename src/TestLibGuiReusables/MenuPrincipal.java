@@ -8,8 +8,9 @@ import LibGuiReusables.FormularioExtensible;
  * and open the template in the editor.
  */
 /**
+ * formulario del Menu orincipal
  *
- * @author Javi
+ * @author Francisco Javier Sánchez Lozano
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 

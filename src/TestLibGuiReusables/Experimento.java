@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JSlider;
 
 /**
+ * formulario diseñado de tipo simple
  *
- * @author Javi
+ * @author Francisco Javier Sánchez Lozano
  */
 public class Experimento extends LibGuiReusables.FormularioSimple implements Observador, Validable, Comunicable {
 
@@ -23,6 +24,61 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Obs
      */
     public Experimento() {
         initComponents();
+    }
+
+    // metodos que se sobrescriben de la interfaz Validable
+    @Override
+    public Boolean validarCampos() {
+        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
+
+        if (jTextNombre.getText().isEmpty()) {
+            jTextNombre.requestFocus();
+            JOptionPane.showMessageDialog(this, "El campo Nombre Experimento no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+
+        if (jTextNombre1.getText().isEmpty()) {
+            jTextNombre1.requestFocus();
+            JOptionPane.showMessageDialog(this, "El campo Descripcion Experimento no puede estar vacio");
+            return (Boolean.FALSE);
+        }
+
+        return (Boolean.TRUE);
+    }
+
+    @Override
+    public void guardarFormulario() {
+
+    }
+
+    @Override
+    public void limpiarFormulario() {
+        this.dispose();
+    }
+    
+// metodo que se sobrescribe de la interfaz Comunicable
+    @Override
+    public void recuperarValorExterno(String nombreComponente, Object valor) {
+
+        if ("jSlider1Laboratorio".equals(nombreComponente)) {
+            jSpinnerExperimento.setValue((Integer) valor);
+        }
+        System.out.println("recuperar valor");
+    }
+
+    // metodo que se sobrescribe de la interfaz Observador
+    @Override
+    public void procesarEventoCambiarValor(EventoCambiarValor evt) {
+
+        if (evt.getOrigen() instanceof JSlider) {
+
+            JSlider s = (JSlider) evt.getOrigen();
+
+            if ("jSlider1Laboratorio".equals(s.getName())) {
+                recuperarValorExterno("jSlider1Laboratorio", s.getValue());
+            }
+        }
+
     }
 
     /**
@@ -123,29 +179,10 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Obs
     }// </editor-fold>//GEN-END:initComponents
 
     private void jSpinnerExperimentoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerExperimentoStateChanged
-        
-        EventoCambiarValor evtCam = new EventoCambiarValor(jSpinnerExperimento);        
+
+        EventoCambiarValor evtCam = new EventoCambiarValor(jSpinnerExperimento);
         getGestorEventos().notificarEvento("CambiarValor", evtCam);
     }//GEN-LAST:event_jSpinnerExperimentoStateChanged
-
-    @Override
-    public Boolean validarCampos() {
-        System.out.println("Validar Campos " + this.getClass() + " " + this.getName());
-
-        if (jTextNombre.getText().isEmpty()) {
-            jTextNombre.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Nombre Experimento no puede estar vacio");
-            return (Boolean.FALSE);
-        }
-
-        if (jTextNombre1.getText().isEmpty()) {
-            jTextNombre1.requestFocus();
-            JOptionPane.showMessageDialog(this, "El campo Descripcion Experimento no puede estar vacio");
-            return (Boolean.FALSE);
-        }
-
-        return (Boolean.TRUE);
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -161,29 +198,4 @@ public class Experimento extends LibGuiReusables.FormularioSimple implements Obs
     private javax.swing.JTextField jTextNombre1;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void recuperarValorExterno(String nombreComponente, Object valor) {
-
-        if ("jSlider1Laboratorio".equals(nombreComponente)) {
-            jSpinnerExperimento.setValue((Integer) valor);
-        }
-        System.out.println("recuperar valor");
-    }
-
-    
-    @Override
-    public void procesarEventoCambiarValor(EventoCambiarValor evt) {
-              
-       
-        
-        if (evt.getOrigen() instanceof JSlider) {
-
-            JSlider s = (JSlider) evt.getOrigen();
-
-            if ("jSlider1Laboratorio".equals(s.getName())) {
-                recuperarValorExterno("jSlider1Laboratorio", s.getValue());
-            }
-        }
-        
-    }
 }
